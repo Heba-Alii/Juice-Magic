@@ -22,7 +22,7 @@ public class JuiceRetrofit {
         return instance;
     }
 
-    //اخدت اوبجكت من ال interface عشان استخدمه في اي اكتيفيتي
+
     public JuiceInterface getJuice() {
         return juiceInterface;
     }
