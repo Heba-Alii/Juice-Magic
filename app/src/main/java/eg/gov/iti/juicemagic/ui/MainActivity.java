@@ -1,6 +1,5 @@
 package eg.gov.iti.juicemagic.ui;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,7 +10,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -34,9 +32,17 @@ public class MainActivity extends AppCompatActivity {
         SlideraAdapter slideraAdapter = new SlideraAdapter();
         binding.categoryRecycler.setAdapter(categoryMenueAdapter);
         binding.slider.setSliderAdapter(slideraAdapter);
+
+//        binding.slider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+//        binding.slider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+//        binding.slider.setScrollTimeInSec(4);
+//        binding.slider.startAutoCycle();
+        binding.slider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        binding.slider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+        binding.slider.setScrollTimeInSec(4); //set scroll delay in seconds :
+        binding.slider.startAutoCycle();
         LatestAdapter latestAdapter = new LatestAdapter();
         binding.latestRecycler.setAdapter(latestAdapter);
-
 
         juiceViewModel.juiceMutableLiveData.observe(this, new Observer<JuiceModel>() {
             @Override
@@ -47,13 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //                slideraAdapter.setList(list);
                 if (juiceModel.getSlider() != null && juiceModel.getSlider().size() != 0) {
                     slideraAdapter.setList(juiceModel.getSlider());
-                    binding.slider.setIndicatorAnimation(IndicatorAnimationType.WORM);
-                    binding.slider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-                    binding.slider.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
-                    binding.slider.setIndicatorSelectedColor(Color.WHITE);
-                    binding.slider.setIndicatorUnselectedColor(Color.GRAY);
-                    binding.slider.setScrollTimeInSec(4);
-                    binding.slider.startAutoCycle();
+
                 } else {
                 }
 

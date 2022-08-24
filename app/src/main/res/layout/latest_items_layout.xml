@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="@color/white"
-    android:elevation="55dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:divider="@android:color/transparent"
     android:dividerHeight="0.0px"
-    android:clipToPadding="false"
+    android:elevation="55dp"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
-    android:clipChildren="false"
-   app:cardPreventCornerOverlap="false"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true"
 
-   >
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,7 +27,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:src="@drawable/mob"
+            android:paddingBottom="10dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,10 +54,8 @@
             android:text="20.00"
             android:textColor="@color/black"
             android:textSize="15sp"
-
             app:layout_constraintStart_toStartOf="@+id/latest_nameTV"
             app:layout_constraintTop_toBottomOf="@+id/latest_nameTV" />
-
         <TextView
             android:id="@+id/latest_desc"
             android:layout_width="wrap_content"
@@ -68,7 +66,6 @@
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
-
             app:layout_constraintStart_toStartOf="@+id/latest_priceTV"
             app:layout_constraintTop_toBottomOf="@+id/latest_priceTV" />
 
@@ -77,7 +74,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
-
             android:src="@drawable/ic_baseline_add_shopping_cart_24"
             app:civ_border_color="@color/yellow"
             app:civ_border_width="2dp"

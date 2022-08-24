@@ -15,7 +15,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/slider_cardV"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="80dp"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="6dp"
@@ -23,29 +23,51 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+<!--                <com.smarteist.autoimageslider.SliderView-->
+<!--                    android:id="@+id/slider"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="250dp"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    android:nestedScrollingEnabled="true"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/category_recycler"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.0"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:sliderAnimationDuration="600"-->
+<!--                    app:sliderAutoCycleEnabled="true"-->
+<!--                    app:sliderCircularHandlerEnabled="true"-->
+<!--                    app:sliderIndicatorAnimationDuration="600"-->
+<!--                    app:sliderIndicatorEnabled="true"-->
+<!--                    app:sliderIndicatorGravity="center_horizontal|bottom"-->
+<!--                    app:sliderIndicatorMargin="15dp"-->
+<!--                    app:sliderIndicatorOrientation="horizontal"-->
+<!--                    app:sliderIndicatorPadding="3dp"-->
+<!--                    app:sliderIndicatorRadius="2dp"-->
+<!--                    app:sliderIndicatorSelectedColor="@color/orange"-->
+<!--                    app:sliderIndicatorUnselectedColor="@color/gary"-->
+<!--                    app:sliderStartAutoCycle="true" />-->
                 <com.smarteist.autoimageslider.SliderView
                     android:id="@+id/slider"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="20dp"
-                    app:layout_constraintBottom_toTopOf="@+id/category_recycler"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:sliderAnimationDuration="600"
                     app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderAutoCycleEnabled="true"
+                    app:sliderCircularHandlerEnabled="true"
                     app:sliderIndicatorAnimationDuration="600"
-                    app:sliderIndicatorEnabled="true"
-                    app:sliderIndicatorGravity="center_horizontal|bottom"
-                    app:sliderIndicatorMargin="15dp"
                     app:sliderIndicatorOrientation="horizontal"
                     app:sliderIndicatorPadding="3dp"
-                    app:sliderIndicatorRadius="2dp"
-                    app:sliderIndicatorSelectedColor="#5A5A5A"
-                    app:sliderIndicatorUnselectedColor="@color/white"
-                    app:sliderScrollTimeInSec="1" />
+                    app:sliderIndicatorRadius="1.5dp"
+                    app:sliderIndicatorUnselectedColor="@color/gary"
+                    app:sliderIndicatorSelectedColor="@color/orange"
+                    app:sliderScrollTimeInSec="3"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    android:nestedScrollingEnabled="true"
+                    app:sliderStartAutoCycle="true" />
+
+
             </androidx.cardview.widget.CardView>
 
             <ImageView
@@ -54,6 +76,7 @@
                 android:layout_height="wrap_content"
 
                 android:src="@drawable/ic_baseline_more_horiz_24"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:background="@color/white"
                 android:orientation="horizontal"
 
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
