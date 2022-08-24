@@ -32,11 +32,6 @@ public class MainActivity extends AppCompatActivity {
         SlideraAdapter slideraAdapter = new SlideraAdapter();
         binding.categoryRecycler.setAdapter(categoryMenueAdapter);
         binding.slider.setSliderAdapter(slideraAdapter);
-
-//        binding.slider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-//        binding.slider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-//        binding.slider.setScrollTimeInSec(4);
-//        binding.slider.startAutoCycle();
         binding.slider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         binding.slider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
         binding.slider.setScrollTimeInSec(4); //set scroll delay in seconds :
@@ -47,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
         juiceViewModel.juiceMutableLiveData.observe(this, new Observer<JuiceModel>() {
             @Override
             public void onChanged(JuiceModel juiceModel) {
-//                ArrayList list=juiceModel.getLatest();
-//                list.add()
-//
-//                slideraAdapter.setList(list);
                 if (juiceModel.getSlider() != null && juiceModel.getSlider().size() != 0) {
                     slideraAdapter.setList(juiceModel.getSlider());
 
