@@ -30,7 +30,7 @@ public class JuiceViewModel extends ViewModel {
             @Override
             public void onFailure(Call<JuiceModel> call, Throwable t) {
 
-                Log.e("TAG", "onResponse: not success" + t.getMessage() );
+                Log.e("TAG", "onResponse: not success" + t.getMessage());
 
             }
         });

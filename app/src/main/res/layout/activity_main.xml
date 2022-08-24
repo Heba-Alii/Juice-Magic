@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -13,28 +12,94 @@
             android:layout_height="match_parent"
             tools:context=".ui.MainActivity">
 
-<!--            <com.smarteist.autoimageslider.SliderView-->
-<!--                android:id="@+id/slider"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="250dp"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:sliderAnimationDuration="600"-->
-<!--                app:sliderAutoCycleDirection="back_and_forth"-->
-<!--                app:sliderIndicatorAnimationDuration="600"-->
-<!--                app:sliderIndicatorEnabled="true"-->
-<!--                app:sliderIndicatorGravity="center_horizontal|bottom"-->
-<!--                app:sliderIndicatorMargin="15dp"-->
-<!--                app:sliderIndicatorOrientation="horizontal"-->
-<!--                app:sliderIndicatorPadding="3dp"-->
-<!--                app:sliderIndicatorRadius="2dp"-->
-<!--                app:sliderIndicatorSelectedColor="#5A5A5A"-->
-<!--                app:sliderIndicatorUnselectedColor="#FFF"-->
-<!--                app:sliderScrollTimeInSec="1">-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/slider_cardV"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="80dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/category_recycler"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:sliderAnimationDuration="600"
+                    app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorEnabled="true"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="15dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="2dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="@color/white"
+                    app:sliderScrollTimeInSec="1" />
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/iv_gif_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_baseline_more_horiz_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider_cardV" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/category_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/orange"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_gif_container"
+                app:layout_constraintVertical_bias="0.138" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Latest"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/category_recycler" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/latest_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="horizontal"
+
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 </layout>
+

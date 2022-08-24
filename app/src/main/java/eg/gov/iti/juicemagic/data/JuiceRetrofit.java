@@ -1,7 +1,5 @@
 package eg.gov.iti.juicemagic.data;
 
-import eg.gov.iti.juicemagic.pojo.JuiceModel;
-import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,7 +21,8 @@ public class JuiceRetrofit {
         }
         return instance;
     }
-//اخدت اوبجكت من ال interface عشان استخدمه في اي اكتيفيتي
+
+    //اخدت اوبجكت من ال interface عشان استخدمه في اي اكتيفيتي
     public JuiceInterface getJuice() {
         return juiceInterface;
     }

@@ -4,21 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class JuiceModel implements Serializable {
-
-   // private ArrayList<Slider> slider;
+    private ArrayList<Slider> slider;
     private ArrayList<Latest> latest;
     private ArrayList<Offer> offers;
     private ArrayList<Category> categories;
     private ArrayList<MostSelling> most_selling;
     private int success;
 
-//    public ArrayList<String> getSlider() {
-//        return slider;
-//    }
-//
-//    public void setSlider(ArrayList<String> slider) {
-//        this.slider = slider;
-//    }
+    public ArrayList<Slider> getSlider() {
+        return slider;
+    }
+
+    public void setSlider(ArrayList<Slider> slider) {
+        this.slider = slider;
+    }
 
     public ArrayList<Latest> getLatest() {
         return latest;
@@ -564,9 +563,25 @@ public class JuiceModel implements Serializable {
     }
 
 
-}
+    public class Slider {
+        private String slider_image;
+        private String slider_type;
 
-//public  class Slider{
-//    private image;
-//}
+        public String getSlider_image() {
+            return slider_image;
+        }
+
+        public void setSlider_image(String slider_image) {
+            this.slider_image = slider_image;
+        }
+
+        public String getSlider_type() {
+            return slider_type;
+        }
+
+        public void setSlider_type(String slider_type) {
+            this.slider_type = slider_type;
+        }
+    }
+}
 

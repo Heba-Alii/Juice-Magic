@@ -1,38 +1,50 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.application'
 
 android {
-    compileSdk 32
+
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "eg.gov.iti.juicemagic"
-        minSdk 21
-        targetSdk 32
+        useLibrary 'org.apache.http.legacy'
+        minSdkVersion 21
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable  false
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    dataBinding {
-        enabled = true
-    }
+
 }
 
-
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -42,18 +54,18 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    // ViewModel and LiveData
+//    // ViewModel and LiveData
     def lifecycle_version = "2.1.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    //recyclerview
+//    //recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     //cardview
     implementation "androidx.cardview:cardview:1.0.0"
     // dependency sor slider view
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
-   implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.bumptech.glide:glide:4.12.0'
-
-
+    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 }

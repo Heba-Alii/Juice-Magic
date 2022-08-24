@@ -1,41 +1,30 @@
 buildscript {
-    repositories {
-        repositories {
-            mavenCentral()
-            maven { url "https://jitpack.io" }
 
-        }
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
+        gradlePluginPortal()
+        jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:6.0.1"
+        classpath 'com.android.tools.build:gradle:4.2.0'
     }
 }
-plugins {
-    id 'com.android.application' version '7.1.2' apply false
-    id 'com.android.library' version '7.1.2' apply false
-}
-//allprojects{
-//    repositories {
-//        google()
-//        jcenter()
-//        maven{
-//            url "https://jitpack.io"
-//        }
-//    }
-//}
+
 allprojects {
     repositories {
-
+        google()
+        maven { url "https://jitpack.io" }
         jcenter()
-        maven {
-            url 'https://maven.fabric.io/public'
-        }
-        maven {
-            url 'https://maven.google.com'
-        }
 
     }
 }
+
+//plugins {
+//    id 'com.android.application' version '7.2.1' apply false
+//    id 'com.android.library' version '7.2.1' apply false
+//}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
