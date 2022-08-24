@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +34,7 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
         // Glide is use to load image
         // from url in your imageview.
         Glide.with(holder.itemView)
-                .load(category.getParent_category_image())
+                .load(category.getParent_category_image()).placeholder(R.drawable.mob).fitCenter()
                 .fitCenter()
                 .into(holder.categoryImg);
 //        if (category.getParent_category_image()==null){
@@ -56,13 +55,13 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 
-       // ImageView bgCategoryImg;
+        // ImageView bgCategoryImg;
         ImageView categoryImg;
         TextView categoryTxt;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-          //  bgCategoryImg = itemView.findViewById(R.id.circle_bg_category_img);
+            //  bgCategoryImg = itemView.findViewById(R.id.circle_bg_category_img);
             categoryImg = itemView.findViewById(R.id.category_item_img);
             categoryTxt = itemView.findViewById(R.id.category_item_txt);
         }

@@ -34,6 +34,7 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.LatestView
         holder.latestDesc.setText(latest.getSub_category_desc());
         Glide.with(holder.itemView)
                 .load(latest.getSub_category_image())
+                .placeholder(R.drawable.mob).fitCenter()
                 .into(holder.latestImages);
     }
 
