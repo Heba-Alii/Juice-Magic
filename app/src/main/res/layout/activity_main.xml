@@ -12,50 +12,25 @@
             android:layout_height="match_parent"
             tools:context=".ui.MainActivity">
 
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                android:id="@+id/slider_cardV"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginBottom="80dp"-->
-            <!--                app:cardBackgroundColor="@android:color/white"-->
-            <!--                app:cardCornerRadius="6dp"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent">-->
-
-
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="150dp"
                 android:nestedScrollingEnabled="true"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:sliderAnimationDuration="600"
                 app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="true"
                 app:sliderIndicatorAnimationDuration="600"
                 app:sliderIndicatorGravity="center_horizontal|bottom"
                 app:sliderIndicatorOrientation="horizontal"
                 app:sliderIndicatorPadding="3dp"
                 app:sliderIndicatorRadius="3dp"
                 app:sliderIndicatorSelectedColor="@color/orange"
-                app:sliderIndicatorUnselectedColor="@color/gary"
-                app:sliderScrollTimeInSec="3"
-                app:sliderStartAutoCycle="true" />
+                app:sliderIndicatorUnselectedColor="@color/gary" />
 
-
-            <ImageView
-                android:id="@+id/iv_gif_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_more_horiz_24"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/slider" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/category_recycler"
@@ -65,18 +40,17 @@
                 android:orientation="horizontal"
                 android:scrollbars="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_gif_container"
-                app:layout_constraintVertical_bias="0.138" />
+                app:layout_constraintEnd_toEndOf="@id/slider"
+                app:layout_constraintStart_toStartOf="@id/slider"
+
+                app:layout_constraintTop_toBottomOf="@+id/slider" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/latest_TV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:paddingTop="15dp"
                 android:text="Latest"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -91,12 +65,126 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
+                android:paddingBottom="15dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="@+id/latest_TV"
+                app:layout_constraintStart_toStartOf="@+id/latest_TV"
+                app:layout_constraintTop_toBottomOf="@+id/latest_TV"
                 tools:listitem="@layout/latest_items_layout" />
+
+            <TextView
+                android:id="@+id/most_selling_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:paddingTop="15dp"
+                android:text="Most Sellimg"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/latest_recycler" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mostselling_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+
+                app:layout_constraintEnd_toEndOf="@+id/most_selling_TV"
+                app:layout_constraintStart_toStartOf="@+id/most_selling_TV"
+                app:layout_constraintTop_toBottomOf="@+id/most_selling_TV"
+                tools:listitem="@layout/latest_items_layout" />
+
+            <TextView
+                android:id="@+id/offers_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Offers"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mostselling_recycler" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/offers_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+
+                app:layout_constraintEnd_toEndOf="@+id/offers_TV"
+                app:layout_constraintStart_toStartOf="@+id/offers_TV"
+                app:layout_constraintTop_toBottomOf="@+id/offers_TV"
+                tools:listitem="@layout/latest_items_layout" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:padding="10dp"
+                app:cardBackgroundColor="@color/red"
+                app:cardCornerRadius="20dp"
+
+                app:cardElevation="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/offers_recycler"
+                app:layout_constraintStart_toStartOf="@id/offers_recycler"
+                app:layout_constraintTop_toBottomOf="@id/offers_recycler">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/item_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:text="1 ITEM"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/price_item_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:text="DHD 28.20"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@id/view_cart_tv"
+                        app:layout_constraintStart_toStartOf="@+id/item_tv"
+                        app:layout_constraintTop_toBottomOf="@+id/item_tv" />
+
+                    <TextView
+                        android:id="@+id/view_cart_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:text="VIEW CART"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@id/price_item_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/item_tv" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

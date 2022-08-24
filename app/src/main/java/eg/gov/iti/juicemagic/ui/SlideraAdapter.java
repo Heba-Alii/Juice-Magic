@@ -29,9 +29,7 @@ public class SlideraAdapter extends SliderViewAdapter<SlideraAdapter.SliderAdapt
 
         JuiceModel.Slider sliderItem = juiceList.get(position);
         Glide.with(holder.itemView)
-                .load(sliderItem.getSlider_image())
-                .placeholder(R.drawable.mob)
-                .fitCenter()
+                .load(sliderItem.getSlider_image()).placeholder(R.drawable.mob).fitCenter()
                 .into(holder.sliderImages);
     }
 

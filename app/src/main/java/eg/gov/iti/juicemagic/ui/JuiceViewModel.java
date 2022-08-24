@@ -26,7 +26,6 @@ public class JuiceViewModel extends ViewModel {
                     Log.e("TAG", "onResponse: not success");
                 }
             }
-
             @Override
             public void onFailure(Call<JuiceModel> call, Throwable t) {
 
