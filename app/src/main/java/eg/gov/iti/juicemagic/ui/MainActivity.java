@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         binding.latestRecycler.setAdapter(latestAdapter);
         SlideraAdapter slideraAdapter = new SlideraAdapter();
         binding.slider.setSliderAdapter(slideraAdapter);
+        MostsellingAdapter mostsellingAdapter = new MostsellingAdapter();
+        binding.mostsellingRecycler.setAdapter(mostsellingAdapter);
+        OffersAdapter offersAdapter = new OffersAdapter();
+        binding.offersRecycler.setAdapter(offersAdapter);
         juiceViewModel.juiceMutableLiveData.observe(this, new Observer<JuiceModel>() {
             @Override
             public void onChanged(JuiceModel juiceModel) {
@@ -54,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (juiceModel.getLatest() != null && juiceModel.getLatest().size() != 0) {
                     latestAdapter.setList(juiceModel.getLatest());
+                }
+                if (juiceModel.getMost_selling() != null && juiceModel.getMost_selling().size() != 0) {
+                    mostsellingAdapter.setList(juiceModel.getMost_selling());
+                }
+                if (juiceModel.getOffers() != null && juiceModel.getOffers().size() != 0) {
+                    offersAdapter.setList(juiceModel.getOffers());
                 }
                 //System.out.println(juiceModel.getCategories().get(0).getParent_category_name());
                 // Log.e("TAG", "onChanged: " +juiceModel.getCategories().get(0).getParent_category_name() );
