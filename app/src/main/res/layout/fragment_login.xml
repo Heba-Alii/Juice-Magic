@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".ui.login.LoginFragment">
+
+            <ImageView
+                android:id="@+id/login_logo"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/white"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/login_mobileTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:background="@drawable/card_view"
+                android:drawableLeft="@drawable/ic_baseline_phone_android_24"
+                android:drawablePadding="5dp"
+                android:elevation="@dimen/cardview_default_elevation"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/login_logo"
+                tools:layout_editor_absoluteX="15dp" />
+
+            <EditText
+                android:id="@+id/login_passTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:background="@drawable/card_view"
+                android:drawableLeft="@drawable/password_24"
+                android:drawablePadding="5dp"
+                android:elevation="@dimen/cardview_default_elevation"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+
+                app:layout_constraintEnd_toEndOf="@+id/login_mobileTV"
+                app:layout_constraintStart_toStartOf="@+id/login_mobileTV"
+                app:layout_constraintTop_toBottomOf="@+id/login_mobileTV" />
+
+            <TextView
+                android:id="@+id/forget_pass_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="Forgot Password ? "
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/login_passTV"
+                app:layout_constraintTop_toBottomOf="@+id/login_passTV" />
+
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/card_view_btn"
+                android:elevation="@dimen/cardview_default_elevation"
+                android:outlineSpotShadowColor="@color/orange"
+                android:padding="15dp"
+                android:text="LOGIN"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="@+id/forget_pass_btn"
+                app:layout_constraintStart_toStartOf="@+id/forget_pass_btn"
+                app:layout_constraintTop_toBottomOf="@+id/forget_pass_btn" />
+
+            <TextView
+                android:id="@+id/forget_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:paddingLeft="15dp"
+                android:paddingTop="60dp"
+                android:paddingBottom="30dp"
+                android:text="Forgot Password ? "
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/login_btn"
+                app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+            <TextView
+                android:id="@+id/signup_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="60dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="30dp"
+                android:text=" Sign Up "
+                android:textColor="@color/orange"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/forget_pass"
+                app:layout_constraintEnd_toEndOf="@+id/login_btn"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/forget_pass"
+                app:layout_constraintTop_toTopOf="@+id/forget_pass"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

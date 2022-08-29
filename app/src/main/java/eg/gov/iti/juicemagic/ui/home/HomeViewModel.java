@@ -1,4 +1,4 @@
-package eg.gov.iti.juicemagic.ui;
+package eg.gov.iti.juicemagic.ui.home;
 
 import android.util.Log;
 
@@ -11,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class JuiceViewModel extends ViewModel {
+public class HomeViewModel extends ViewModel {
     public MutableLiveData<JuiceModel> juiceMutableLiveData = new MutableLiveData<>();
 
     //function return juices from retrofit

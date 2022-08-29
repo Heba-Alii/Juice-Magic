@@ -1,31 +1,44 @@
-package eg.gov.iti.juicemagic.ui;
+package eg.gov.iti.juicemagic.ui.home;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
-import eg.gov.iti.juicemagic.R;
-import eg.gov.iti.juicemagic.databinding.ActivityMainBinding;
+import eg.gov.iti.juicemagic.databinding.FragmentHomeBinding;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
+import eg.gov.iti.juicemagic.ui.CategoryMenueAdapter;
+import eg.gov.iti.juicemagic.ui.JuiceViewModel;
+import eg.gov.iti.juicemagic.ui.LatestAdapter;
+import eg.gov.iti.juicemagic.ui.MostsellingAdapter;
+import eg.gov.iti.juicemagic.ui.OffersAdapter;
+import eg.gov.iti.juicemagic.ui.SlideraAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeFragment extends Fragment {
     JuiceViewModel juiceViewModel;
+    private FragmentHomeBinding binding;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar_title);
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        HomeViewModel homeViewModel =
+                new ViewModelProvider(this).get(HomeViewModel.class);
+
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        // final TextView textView = binding.textHome;
+        //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        // ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         juiceViewModel = ViewModelProviders.of(this).get(JuiceViewModel.class);
         juiceViewModel.getJuices();
         CategoryMenueAdapter categoryMenueAdapter = new CategoryMenueAdapter();
@@ -53,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 if (juiceModel.getCategories() != null && juiceModel.getCategories().size() != 0) {
                     categoryMenueAdapter.setList(juiceModel.getCategories());
                 }
-//                else {
-//                    Log.e("TAG", "onChanged: " + juiceModel.getCategories().get(0).getParent_category_name());
-//                }
                 if (juiceModel.getLatest() != null && juiceModel.getLatest().size() != 0) {
                     latestAdapter.setList(juiceModel.getLatest());
                 }
@@ -69,11 +79,15 @@ public class MainActivity extends AppCompatActivity {
                 // Log.e("TAG", "onChanged: " +juiceModel.getCategories().get(0).getParent_category_name() );
             }
         });
-        binding.categoryRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.setLifecycleOwner(this);
-        binding.latestRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.setLifecycleOwner(this);
-
-
+//        binding.categoryRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        binding.setLifecycleOwner(this);
+//        binding.latestRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        binding.setLifecycleOwner(this);
+        return root;
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

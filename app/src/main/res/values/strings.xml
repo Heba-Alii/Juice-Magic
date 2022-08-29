@@ -1,3 +1,14 @@
 <resources>
     <string name="Juice_Magic">Home</string>
+    <string name="title_activity_side_menue">SideMenue</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Juice Magic</string>
+    <string name="nav_header_subtitle">Emcan Project</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_signup">Signup</string>
 </resources>
