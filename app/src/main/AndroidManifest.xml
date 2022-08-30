@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SideMenue"
+            android:name=".ui.SideMenue"
             android:exported="true"
             android:label="@string/title_activity_side_menue"
             android:theme="@style/Theme.JuiceMagic.NoActionBar">

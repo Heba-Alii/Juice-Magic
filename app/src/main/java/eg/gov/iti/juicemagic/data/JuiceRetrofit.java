@@ -9,6 +9,7 @@ public class JuiceRetrofit {
     private JuiceInterface juiceInterface;
     public static JuiceRetrofit instance;
 
+
     public JuiceRetrofit() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         juiceInterface = retrofit.create(JuiceInterface.class);
@@ -24,4 +25,8 @@ public class JuiceRetrofit {
     public JuiceInterface getJuice() {
         return juiceInterface;
     }
+
+
+
+
 }

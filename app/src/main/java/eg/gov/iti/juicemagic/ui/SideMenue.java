@@ -1,4 +1,4 @@
-package eg.gov.iti.juicemagic;
+package eg.gov.iti.juicemagic.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
+import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.ActivitySideMenueBinding;
 
 public class SideMenue extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class SideMenue extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_login, R.id.nav_signup)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_side_menue);

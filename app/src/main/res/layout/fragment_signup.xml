@@ -108,6 +108,7 @@
                 android:elevation="@dimen/cardview_default_elevation"
                 android:outlineSpotShadowColor="@color/orange"
                 android:padding="15dp"
+                android:backgroundTint="@color/orange"
                 android:text="SIGN UP"
                 android:textColor="@color/white"
                 android:textSize="17sp"
