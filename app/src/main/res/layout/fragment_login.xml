@@ -74,7 +74,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/login_passTV"
                 app:layout_constraintTop_toBottomOf="@+id/login_passTV" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

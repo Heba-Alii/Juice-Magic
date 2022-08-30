@@ -68,11 +68,9 @@ public class SignupFragment extends Fragment {
                     info.commit();
                     Log.e("TAG", "onChanged: sucess" + authModel.getMessage());
                     Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_home);
-
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "this user already register", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         return root;

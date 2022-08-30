@@ -97,7 +97,7 @@
                 app:layout_constraintStart_toStartOf="@+id/confirm_passTV"
                 app:layout_constraintTop_toBottomOf="@+id/confirm_passTV" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signup_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,10 +105,10 @@
                 android:layout_marginTop="35dp"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/card_view_btn"
+                android:backgroundTint="@color/orange"
                 android:elevation="@dimen/cardview_default_elevation"
                 android:outlineSpotShadowColor="@color/orange"
                 android:padding="15dp"
-                android:backgroundTint="@color/orange"
                 android:text="SIGN UP"
                 android:textColor="@color/white"
                 android:textSize="17sp"
