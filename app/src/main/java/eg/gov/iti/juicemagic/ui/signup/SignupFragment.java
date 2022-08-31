@@ -3,7 +3,6 @@ package eg.gov.iti.juicemagic.ui.signup;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ public class SignupFragment extends Fragment {
 
     private FragmentSignupBinding binding;
     SignupViewModel signupViewModel;
-    SharedPreferences sharedPreferences;
+    public static SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,23 +54,33 @@ public class SignupFragment extends Fragment {
                 }
             }
         });
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_login);
+
+            }
+        });
         signupViewModel.usersModelMutableLiveData.observe(this, new Observer<AuthModel>() {
             @Override
             public void onChanged(AuthModel authModel) {
+
                 if (authModel.getSuccess() == 1) {
                     sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
                     SharedPreferences.Editor info = sharedPreferences.edit();
-                    info.putString("Mobile Number", binding.mobileTV.getText().toString());
-                    info.putString("Password", binding.passTV.getText().toString());
-                    info.putString("Confirm Password", binding.confirmPassTV.getText().toString());
-                    info.putString("Email", binding.emailTV.getText().toString());
+                    info.putString("mobile", binding.mobileTV.getText().toString());
+                    info.putString("password", binding.passTV.getText().toString());
+                    info.putString("confirm_pass", binding.confirmPassTV.getText().toString());
+                    info.putString("email", binding.emailTV.getText().toString());
+                    info.putBoolean("is Logged in", true);
                     info.commit();
-                    Log.e("TAG", "onChanged: sucess" + authModel.getMessage());
                     Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_home);
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "this user already register", Toast.LENGTH_SHORT).show();
                 }
             }
+
+
         });
         return root;
     }

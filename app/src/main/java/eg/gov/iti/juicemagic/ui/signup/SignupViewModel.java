@@ -10,8 +10,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignupViewModel extends ViewModel {
-
     public MutableLiveData<AuthModel> usersModelMutableLiveData = new MutableLiveData<>();
+
     //function return data from retrofit
     public void postUsers(UsersModel usersModel) {
         retrofit2.Call<AuthModel> call = JuiceRetrofit.getInstance().getJuice().signup(usersModel);

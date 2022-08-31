@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_nav_login_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_signup"
+            app:destination="@id/nav_signup" />
     </fragment>
 
     <fragment
@@ -29,5 +32,8 @@
         <action
             android:id="@+id/action_nav_signup_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_signup_to_nav_login"
+            app:destination="@id/nav_login" />
     </fragment>
 </navigation>
