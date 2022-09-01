@@ -85,6 +85,7 @@ public class HomeFragment extends Fragment {
 //        binding.setLifecycleOwner(this);
         return root;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

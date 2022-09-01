@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.navigation.NavigationView;
+
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentLoginBinding;
+import eg.gov.iti.juicemagic.databinding.NavHeaderSideMenueBinding;
 
 public class LoginFragment extends Fragment {
 
@@ -30,17 +34,19 @@ public class LoginFragment extends Fragment {
 
             public void onClick(View view) {
                 sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
-                final Boolean isLoggedIn = sharedPreferences.getBoolean("is Logged in", false);
-                final String suMobmob = sharedPreferences.getString("mobile", "DEFAULT_NUMBER");
-                final String suPass = sharedPreferences.getString("password", "DEFAULT_PASSWORD");
+
                 String mob = binding.loginMobileTV.getText().toString();
                 String pass = binding.loginPassTV.getText().toString();
-                if (mob.equals(suMobmob) && pass.equals(suPass)) {
-                    sharedPreferences.edit().putBoolean("is Logged in", false).apply();
+                String suphone = sharedPreferences.getString("mobile", "");
+                String suEmail = sharedPreferences.getString("email", "");
+                String supassword = sharedPreferences.getString("password", "");
+                if (mob.equals(suphone) && pass.equals(supassword)) {
                     Navigation.findNavController(container).navigate(R.id.action_nav_login_to_nav_home);
+
                 } else {
                     Toast.makeText(getContext(), "User not found please Register", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
         });

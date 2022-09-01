@@ -66,14 +66,15 @@ public class SignupFragment extends Fragment {
             public void onChanged(AuthModel authModel) {
 
                 if (authModel.getSuccess() == 1) {
-                    sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
+                    sharedPreferences = requireContext().getSharedPreferences("Users", Context.MODE_PRIVATE);
                     SharedPreferences.Editor info = sharedPreferences.edit();
                     info.putString("mobile", binding.mobileTV.getText().toString());
                     info.putString("password", binding.passTV.getText().toString());
                     info.putString("confirm_pass", binding.confirmPassTV.getText().toString());
                     info.putString("email", binding.emailTV.getText().toString());
-                    info.putBoolean("is Logged in", true);
+                   // info.putBoolean("is Logged in", true);
                     info.commit();
+
                     Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_home);
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "this user already register", Toast.LENGTH_SHORT).show();
