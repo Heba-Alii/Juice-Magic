@@ -3,6 +3,7 @@ package eg.gov.iti.juicemagic.ui.signup;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,24 +11,32 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.navigation.NavigationView;
+
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentSignupBinding;
 import eg.gov.iti.juicemagic.pojo.AuthModel;
 import eg.gov.iti.juicemagic.pojo.UsersModel;
+import eg.gov.iti.juicemagic.ui.home.HomeFragment;
 
 public class SignupFragment extends Fragment {
 
     private FragmentSignupBinding binding;
+    NavigationView navigationView;
     SignupViewModel signupViewModel;
+    FragmentManager fragmentManager;
     public static SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
         binding = FragmentSignupBinding.inflate(inflater, container, false);
@@ -64,7 +73,6 @@ public class SignupFragment extends Fragment {
         signupViewModel.usersModelMutableLiveData.observe(this, new Observer<AuthModel>() {
             @Override
             public void onChanged(AuthModel authModel) {
-
                 if (authModel.getSuccess() == 1) {
                     sharedPreferences = requireContext().getSharedPreferences("Users", Context.MODE_PRIVATE);
                     SharedPreferences.Editor info = sharedPreferences.edit();
@@ -72,16 +80,26 @@ public class SignupFragment extends Fragment {
                     info.putString("password", binding.passTV.getText().toString());
                     info.putString("confirm_pass", binding.confirmPassTV.getText().toString());
                     info.putString("email", binding.emailTV.getText().toString());
-                   // info.putBoolean("is Logged in", true);
-                    info.commit();
 
-                    Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_home);
+                    //info.commit();
+
+                    //Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_home);
+                    Log.e("TAG", "onChanged: not nav" + authModel.getMessage());
+                    //replaceFragment = new SignupFragment();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.app_bar_side_menue, replaceFragment);
+
+
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    //transaction.setReorderingAllowed(true);
+//                    transaction.replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment(),null);
+//                    transaction.commit();
+                    FragmentManager fragmentManager;
+                    fragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();
+
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "this user already register", Toast.LENGTH_SHORT).show();
                 }
             }
-
-
         });
         return root;
     }

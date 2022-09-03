@@ -41,7 +41,10 @@ public class LoginFragment extends Fragment {
                 String suEmail = sharedPreferences.getString("email", "");
                 String supassword = sharedPreferences.getString("password", "");
                 if (mob.equals(suphone) && pass.equals(supassword)) {
+
                     Navigation.findNavController(container).navigate(R.id.action_nav_login_to_nav_home);
+
+
 
                 } else {
                     Toast.makeText(getContext(), "User not found please Register", Toast.LENGTH_SHORT).show();

@@ -20,7 +20,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_side_menue" />
+    <include layout="@layout/content_side_menue"
+
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
