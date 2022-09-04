@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,6 +24,7 @@ import eg.gov.iti.juicemagic.databinding.FragmentSignupBinding;
 import eg.gov.iti.juicemagic.pojo.AuthModel;
 import eg.gov.iti.juicemagic.pojo.UsersModel;
 import eg.gov.iti.juicemagic.ui.home.HomeFragment;
+import eg.gov.iti.juicemagic.ui.login.LoginFragment;
 
 public class SignupFragment extends Fragment {
 
@@ -66,7 +66,12 @@ public class SignupFragment extends Fragment {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_login);
+//                LoginFragment fragment2 = new LoginFragment();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.nav_host_fragment_content_side_menue, fragment2);
+//                fragmentTransaction.commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new LoginFragment()).commit();
 
             }
         });
@@ -80,21 +85,14 @@ public class SignupFragment extends Fragment {
                     info.putString("password", binding.passTV.getText().toString());
                     info.putString("confirm_pass", binding.confirmPassTV.getText().toString());
                     info.putString("email", binding.emailTV.getText().toString());
-
-                    //info.commit();
-
-                    //Navigation.findNavController(container).navigate(R.id.action_nav_signup_to_nav_home);
+                    info.commit();
                     Log.e("TAG", "onChanged: not nav" + authModel.getMessage());
-                    //replaceFragment = new SignupFragment();
-                    //getSupportFragmentManager().beginTransaction().replace(R.id.app_bar_side_menue, replaceFragment);
-
-
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    //transaction.setReorderingAllowed(true);
-//                    transaction.replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment(),null);
-//                    transaction.commit();
-                    FragmentManager fragmentManager;
-                    fragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();
+//                    HomeFragment fragment2 = new HomeFragment();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.nav_host_fragment_content_side_menue, fragment2);
+//                    fragmentTransaction.commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();
 
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "this user already register", Toast.LENGTH_SHORT).show();

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -41,37 +42,31 @@ public class SideMenue extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         binding = ActivitySideMenueBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setSupportActionBar(binding.appBarSideMenue.toolbar);
+        // setSupportActionBar(binding.tool);
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setTitle("Home");
         drawer = binding.drawerLayout;
         navigationView = binding.navView;
 
 
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.app_bar_side_menue, new HomeFragment()).commit();
-//            navigationView.setCheckedItem(R.id.nav_home);
-//        }
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer,binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_login, R.id.nav_signup, R.id.nav_logout)
                 .setOpenableLayout(drawer)
                 .build();
         Log.e("TAG", "onCreate: on create");
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_side_menue);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+       //NavController navController=Navigation.findNavController(this,R.id.nav_host_fragment_content_side_menue);
+        //NavigationUI.setupActionBarWithNavController(this,navController,mAppBarConfiguration);
+        //NavigationUI.setupWithNavController(navigationView,navController);
+
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
-
-
         mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -86,9 +81,7 @@ public class SideMenue extends AppCompatActivity implements
                 SharedPreferences sharedPreferences = getSharedPreferences("Users", MODE_PRIVATE);
                 String suMobmob = sharedPreferences.getString("mobile", "");
                 String suEmail = sharedPreferences.getString("email", "");
-                Log.e("TAG", "onChanged: " + sharedPreferences.getString("mobile", ""));
                 invalidateOptionsMenu();
-                Log.e("TAG", "onResume: onresume");
                 if (sharedPreferences.getString("email", "") != "") {
                     userMail.setText(suEmail);
                     userMobile.setText(suMobmob);
@@ -130,19 +123,23 @@ public class SideMenue extends AppCompatActivity implements
                 logOut();
                 return true;
             case R.id.nav_home:
+                getSupportActionBar().setTitle("Home");
                 replaceFragment = new HomeFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
                 break;
             case R.id.nav_login:
+
+                getSupportActionBar().setTitle("Login");
                 replaceFragment = new LoginFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
                 break;
             case R.id.nav_signup:
+                getSupportActionBar().setTitle("Signup");
+
                 replaceFragment = new SignupFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
                 break;
-            //   default:
-            // return super.onOptionsItemSelected(item);
+
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -153,8 +150,7 @@ public class SideMenue extends AppCompatActivity implements
         getSharedPreferences("Users", MODE_PRIVATE)
                 .edit().clear().commit();
         SharedPreferences sharedPreferences = getSharedPreferences("Users", MODE_PRIVATE);
-        getSupportFragmentManager().beginTransaction().replace(R.id.app_bar_side_menue, new SignupFragment()).commit();
-        Log.e("TAG", "logout: " + sharedPreferences.getString("mobile", ""));
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();
 
     }
 
