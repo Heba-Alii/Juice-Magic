@@ -16,4 +16,6 @@ public interface JuiceInterface {
     @POST("add-client.php")
     public Call<AuthModel> signup(@Body UsersModel usersModel);
 
+    @POST("login.php?")
+    public Call<AuthModel> login(@Body UsersModel usersModel);
 }

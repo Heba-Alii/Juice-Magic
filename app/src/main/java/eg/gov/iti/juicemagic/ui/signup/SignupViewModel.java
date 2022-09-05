@@ -19,12 +19,10 @@ public class SignupViewModel extends ViewModel {
             @Override
             public void onResponse(retrofit2.Call<AuthModel> call, Response<AuthModel> response) {
                 usersModelMutableLiveData.setValue(response.body());
-                //Log.e("TAG", "onResponse: success" + response.body().getMessage());
             }
 
             @Override
             public void onFailure(retrofit2.Call<AuthModel> call, Throwable t) {
-                // Log.e("TAG", "onResponse: not success" + t.getMessage());
             }
         });
     }

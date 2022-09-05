@@ -12,9 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.navigation.NavigationView;
@@ -38,7 +36,7 @@ public class SignupFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
+        //signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
         binding = FragmentSignupBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         signupViewModel = ViewModelProviders.of(this).get(SignupViewModel.class);
@@ -66,11 +64,7 @@ public class SignupFragment extends Fragment {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                LoginFragment fragment2 = new LoginFragment();
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment_content_side_menue, fragment2);
-//                fragmentTransaction.commit();
+
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new LoginFragment()).commit();
 
             }
@@ -87,11 +81,7 @@ public class SignupFragment extends Fragment {
                     info.putString("email", binding.emailTV.getText().toString());
                     info.commit();
                     Log.e("TAG", "onChanged: not nav" + authModel.getMessage());
-//                    HomeFragment fragment2 = new HomeFragment();
-//                    FragmentManager fragmentManager = getFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.nav_host_fragment_content_side_menue, fragment2);
-//                    fragmentTransaction.commit();
+
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();
 
                 } else {

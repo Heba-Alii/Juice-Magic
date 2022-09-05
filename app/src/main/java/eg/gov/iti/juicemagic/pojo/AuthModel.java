@@ -39,6 +39,15 @@ public class AuthModel implements Serializable {
         private String client_phone;
         private String client_password;
         private String client_email;
+        private String date;
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
 
         public String getClient_name() {
             return client_name;

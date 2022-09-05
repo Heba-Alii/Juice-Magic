@@ -23,6 +23,8 @@ import com.google.android.material.navigation.NavigationView;
 
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.ActivitySideMenueBinding;
+import eg.gov.iti.juicemagic.pojo.AuthModel;
+import eg.gov.iti.juicemagic.pojo.UsersModel;
 import eg.gov.iti.juicemagic.ui.home.HomeFragment;
 import eg.gov.iti.juicemagic.ui.login.LoginFragment;
 import eg.gov.iti.juicemagic.ui.signup.SignupFragment;
@@ -36,6 +38,7 @@ public class SideMenue extends AppCompatActivity implements
     NavigationView navigationView;
     NavController navController;
     DrawerLayout drawer;
+    AuthModel authModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class SideMenue extends AppCompatActivity implements
         navigationView = binding.navView;
 
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer,binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -59,7 +62,7 @@ public class SideMenue extends AppCompatActivity implements
                 .build();
         Log.e("TAG", "onCreate: on create");
 
-       //NavController navController=Navigation.findNavController(this,R.id.nav_host_fragment_content_side_menue);
+        //NavController navController=Navigation.findNavController(this,R.id.nav_host_fragment_content_side_menue);
         //NavigationUI.setupActionBarWithNavController(this,navController,mAppBarConfiguration);
         //NavigationUI.setupWithNavController(navigationView,navController);
 
@@ -81,10 +84,11 @@ public class SideMenue extends AppCompatActivity implements
                 SharedPreferences sharedPreferences = getSharedPreferences("Users", MODE_PRIVATE);
                 String suMobmob = sharedPreferences.getString("mobile", "");
                 String suEmail = sharedPreferences.getString("email", "");
-                invalidateOptionsMenu();
-                if (sharedPreferences.getString("email", "") != "") {
-                    userMail.setText(suEmail);
-                    userMobile.setText(suMobmob);
+                String suPass = sharedPreferences.getString("password", "");
+                        invalidateOptionsMenu();
+                userMail.setText("Mobile Number :" + suMobmob);
+                userMobile.setText("Password :" + suPass);
+                if (suEmail != "" || suMobmob != "") {
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_signup).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
@@ -97,10 +101,12 @@ public class SideMenue extends AppCompatActivity implements
 
             @Override
             public void onDrawerClosed(View drawerView) {
+
             }
 
             @Override
             public void onDrawerStateChanged(int newState) {
+
             }
         });
     }
@@ -123,18 +129,18 @@ public class SideMenue extends AppCompatActivity implements
                 logOut();
                 return true;
             case R.id.nav_home:
-                getSupportActionBar().setTitle("Home");
+                // getSupportActionBar().setTitle("Home");
                 replaceFragment = new HomeFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
                 break;
             case R.id.nav_login:
 
-                getSupportActionBar().setTitle("Login");
+                // getSupportActionBar().setTitle("Login");
                 replaceFragment = new LoginFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
                 break;
             case R.id.nav_signup:
-                getSupportActionBar().setTitle("Signup");
+                //    getSupportActionBar().setTitle("Signup");
 
                 replaceFragment = new SignupFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
@@ -147,6 +153,8 @@ public class SideMenue extends AppCompatActivity implements
 
 
     public void logOut() {
+
+        drawer.closeDrawer(GravityCompat.START);
         getSharedPreferences("Users", MODE_PRIVATE)
                 .edit().clear().commit();
         SharedPreferences sharedPreferences = getSharedPreferences("Users", MODE_PRIVATE);
