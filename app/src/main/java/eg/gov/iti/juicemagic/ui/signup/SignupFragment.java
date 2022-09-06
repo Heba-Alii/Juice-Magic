@@ -75,10 +75,11 @@ public class SignupFragment extends Fragment {
                 if (authModel.getSuccess() == 1) {
                     sharedPreferences = requireContext().getSharedPreferences("Users", Context.MODE_PRIVATE);
                     SharedPreferences.Editor info = sharedPreferences.edit();
-                    info.putString("mobile", binding.mobileTV.getText().toString());
-                    info.putString("password", binding.passTV.getText().toString());
-                    info.putString("confirm_pass", binding.confirmPassTV.getText().toString());
-                    info.putString("email", binding.emailTV.getText().toString());
+                    info.putString("mobile", authModel.getProduct().get(0).getClient_phone());
+                    info.putString("password", authModel.getProduct().get(0).getClient_password());
+                    info.putString("confirm_pass", authModel.getProduct().get(0).getClient_password());
+                    info.putString("email", authModel.getProduct().get(0).getClient_email());
+                    info.putString("clientId", authModel.getProduct().get(0).getClient_id());
                     info.commit();
                     Log.e("TAG", "onChanged: not nav" + authModel.getMessage());
 

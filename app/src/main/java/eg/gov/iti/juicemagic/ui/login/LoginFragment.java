@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                usersModel = new UsersModel("heba", binding.loginMobileTV.getText().toString(), binding.loginPassTV.getText().toString() , "", "asbcd", "en", "Android");
+                usersModel = new UsersModel("heba", binding.loginMobileTV.getText().toString(), binding.loginPassTV.getText().toString(), "", "asbcd", "en", "Android");
                 loginViewModel.getUsers(usersModel);
 
             }
@@ -64,11 +64,11 @@ public class LoginFragment extends Fragment {
                     Log.e("TAG", "onChanged: not user" + authModel.getMessage());
 
                     SharedPreferences.Editor edit = sharedPreferences.edit();
-                    edit.putString("mobile", binding.loginMobileTV.getText().toString());
-                    edit.putString("password", binding.loginPassTV.getText().toString());
-                    //to get email from api
-                    //edit.putString("email", usersModel.getClient_email());
-
+                    edit.putString("mobile", authModel.getProduct().get(0).getClient_phone());
+                    edit.putString("password", authModel.getProduct().get(0).getClient_password());
+                    edit.putString("confirm_pass", authModel.getProduct().get(0).getClient_password());
+                    edit.putString("email", authModel.getProduct().get(0).getClient_email());
+                    edit.putString("clientId", authModel.getProduct().get(0).getClient_id());
                     edit.commit();
                     Log.e("TAG", "onChanged: not user" + authModel.getMessage());
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();

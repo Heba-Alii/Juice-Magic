@@ -87,8 +87,8 @@ public class SideMenue extends AppCompatActivity implements
                 String suEmail = sharedPreferences.getString("email", "");
                 String suPass = sharedPreferences.getString("password", "");
                 invalidateOptionsMenu();
-                userMail.setText("Mobile Number :" + suMobmob);
-                userMobile.setText("Password :" + suPass);
+                userMail.setText("Email : " + suEmail);
+                userMobile.setText("Mobile Number : " + suMobmob);
                 if (suEmail != "" || suMobmob != "") {
                     navigationView.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigationView.getMenu().findItem(R.id.nav_signup).setVisible(false);

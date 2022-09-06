@@ -2,6 +2,8 @@ package eg.gov.iti.juicemagic.data;
 
 import eg.gov.iti.juicemagic.pojo.AuthModel;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
+import eg.gov.iti.juicemagic.pojo.ParentCategoryModel;
+import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 import eg.gov.iti.juicemagic.pojo.UsersModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -18,4 +20,11 @@ public interface JuiceInterface {
 
     @POST("login.php?")
     public Call<AuthModel> login(@Body UsersModel usersModel);
+
+    @GET("get-parent-categories.php?")
+    public Call<ParentCategoryModel> getMenue(@Query("lang") String lang);
+
+    @GET("get-sub-categories.php?")
+    public Call<SubCategoryModel> getSubCategory(@Query("lang") String lang, @Query("client_id") String clientId,
+                                                 @Query("parent_category_id") String parentcategoryId);
 }
