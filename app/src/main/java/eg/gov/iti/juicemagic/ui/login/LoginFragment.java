@@ -67,7 +67,8 @@ public class LoginFragment extends Fragment {
                     edit.putString("mobile", binding.loginMobileTV.getText().toString());
                     edit.putString("password", binding.loginPassTV.getText().toString());
                     //to get email from api
-                    edit.putString("email", usersModel.getClient_email());
+                    //edit.putString("email", usersModel.getClient_email());
+
                     edit.commit();
                     Log.e("TAG", "onChanged: not user" + authModel.getMessage());
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();

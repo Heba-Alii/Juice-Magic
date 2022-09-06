@@ -39,6 +39,7 @@ public class SideMenue extends AppCompatActivity implements
     NavController navController;
     DrawerLayout drawer;
     AuthModel authModel;
+    UsersModel usersModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,7 @@ public class SideMenue extends AppCompatActivity implements
                 String suMobmob = sharedPreferences.getString("mobile", "");
                 String suEmail = sharedPreferences.getString("email", "");
                 String suPass = sharedPreferences.getString("password", "");
-                        invalidateOptionsMenu();
+                invalidateOptionsMenu();
                 userMail.setText("Mobile Number :" + suMobmob);
                 userMobile.setText("Password :" + suPass);
                 if (suEmail != "" || suMobmob != "") {
