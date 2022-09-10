@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,22 +25,24 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
     public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new CategoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.menue_items_layout, parent, false));
     }
-
-
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         JuiceModel.Category category = juiceList.get(position);
         holder.categoryTxt.setText(category.getParent_category_name());
-
         // Glide is use to load image
         // from url in your imageview.
         Glide.with(holder.itemView)
                 .load(category.getParent_category_image()).placeholder(R.drawable.mob).fitCenter()
                 .fitCenter()
                 .into(holder.categoryImg);
-//        if (category.getParent_category_image()==null){
-//            holder.categoryImg.setImageBitmap(R.id.category_item_img);
-//        }
+        holder.categoryImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_menue);
+
+            }
+        });
+
 
     }
 

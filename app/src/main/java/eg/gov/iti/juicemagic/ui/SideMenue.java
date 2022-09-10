@@ -135,7 +135,6 @@ public class SideMenue extends AppCompatActivity implements
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();
                 break;
             case R.id.nav_login:
-
                 // getSupportActionBar().setTitle("Login");
                 replaceFragment = new LoginFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, replaceFragment).commit();

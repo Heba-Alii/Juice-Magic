@@ -22,7 +22,7 @@ public interface JuiceInterface {
     public Call<AuthModel> login(@Body UsersModel usersModel);
 
     @GET("get-parent-categories.php?")
-    public Call<ParentCategoryModel> getMenue(@Query("lang") String lang);
+    public Call<ParentCategoryModel> getCategory(@Query("lang") String lang);
 
     @GET("get-sub-categories.php?")
     public Call<SubCategoryModel> getSubCategory(@Query("lang") String lang, @Query("client_id") String clientId,
