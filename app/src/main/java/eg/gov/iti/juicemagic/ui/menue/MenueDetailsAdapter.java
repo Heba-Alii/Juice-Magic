@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
+import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 //import eg.gov.iti.recyclerview.R;
 
 public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapter.MenueDetailsViewHolder> {
@@ -32,9 +33,14 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
     public void onBindViewHolder(@NonNull MenueDetailsViewHolder holder, int position) {
         JuiceModel.Latest subCategoryModel = menueDetailsList.get(position);
         holder.menueNameTxt.setText(subCategoryModel.getSub_category_name());
-        holder.menuePriceTxt.setText(subCategoryModel.getDiscount()+"");
+if (subCategoryModel.getSizes().stream().count()!=0){
+    holder.menuePriceTxt.setText(subCategoryModel.getSizes().get(0).getSub_category_size_price()+" "+ "BHD");
+        }
+else {
+ holder.menuePriceTxt.setText("BHD");
+}
         Glide.with(holder.itemView)
-                .load(subCategoryModel.getSub_category_image())
+                .load(subCategoryModel.getSub_category_image()).placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.menueDetailsImg);
     }

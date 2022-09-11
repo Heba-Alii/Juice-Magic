@@ -30,7 +30,7 @@ public class MenueDetailsFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(MenueDetailsViewModel.class);
 
         mViewModel.getSubCategory(getArguments().getString("parentCategoryId"));
-        MenueDetailsAdapter menueDetailsAdapter=new MenueDetailsAdapter();
+        MenueDetailsAdapter menueDetailsAdapter = new MenueDetailsAdapter();
         binding.menueRecycler.setAdapter(menueDetailsAdapter);
 
         mViewModel.menueDetailsMutableLiveData.observe(this, new Observer<SubCategoryModel>() {
