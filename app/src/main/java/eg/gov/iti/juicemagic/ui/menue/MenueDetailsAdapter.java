@@ -32,7 +32,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
     public void onBindViewHolder(@NonNull MenueDetailsViewHolder holder, int position) {
         JuiceModel.Latest subCategoryModel = menueDetailsList.get(position);
         holder.menueNameTxt.setText(subCategoryModel.getSub_category_name());
-        holder.menuePriceTxt.setText(subCategoryModel.getSizes().get(0).getSub_category_size_price());
+        holder.menuePriceTxt.setText(subCategoryModel.getDiscount()+"");
         Glide.with(holder.itemView)
                 .load(subCategoryModel.getSub_category_image())
                 .fitCenter()

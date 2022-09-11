@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,92 +17,80 @@ import com.google.android.material.tabs.TabLayout;
 import eg.gov.iti.juicemagic.databinding.FragmentMenueBinding;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.ParentCategoryModel;
+import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 
 public class MenueFragment extends Fragment {
 
     private MenueViewModel mViewModel;
     private FragmentMenueBinding binding;
     JuiceModel juiceModel;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ParentCategoryModel parentCategoryModel;
+    private SubCategoryModel subCategoryModel;
 
-//    public static MenueFragment newInstance() {
-//        return new MenueFragment();
-//    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        //  return inflater.inflate(R.layout.fragment_menue, container, false);
+
         binding = FragmentMenueBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mViewModel = ViewModelProviders.of(this).get(MenueViewModel.class);
         mViewModel.getMenue();
-        MenueDetailsAdapter menueDetailsAdapter = new MenueDetailsAdapter();
-        MenueAdapter menueAdapter = new MenueAdapter(getChildFragmentManager());
-        MenueDetailsFragment menueDetailsFragment = new MenueDetailsFragment();
-        mViewModel.menueMutableliveData.observe(this, new Observer<ParentCategoryModel>() {
-            @Override
-            public void onChanged(ParentCategoryModel parentCategoryModel) {
-                if (parentCategoryModel.getProduct() != null && parentCategoryModel.getProduct().size() != 0) {
-                    binding.pager.setAdapter(menueAdapter);
-                    binding.menueTab.setupWithViewPager(binding.pager);
-                    binding.menueTab.addTab(parentCategoryModel.getProduct());
-                    menueAdapter.addTabs(new MyTab("tab1","ede"));
+        initView();
+        return root;
+    }
 
-                    //menueAdapter.addTab(new MyTab(parentCategoryModel.getProduct(), MenueDetailsFragment.newInstance()));
-                    //  menueAdapter.addTab(new MyTab(parentCategoryModel.getProduct(), menueDetailsFragment));
-                    menueAdapter.notifyDataSetChanged();
 
-                }
-            }
-        });
+    public void initView() {
+        binding.pager.setOffscreenPageLimit(5);
+
+        binding.pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.menueTab));
         binding.menueTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Toast.makeText(getContext(), "Tab Selected", Toast.LENGTH_SHORT).show();
                 binding.pager.setCurrentItem(tab.getPosition());
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                Toast.makeText(getContext(), "Tab unselected", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                Toast.makeText(getContext(), "Tabreselected", Toast.LENGTH_SHORT).show();
+
             }
         });
-        binding.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Toast.makeText(getContext(), "on page scrolled", Toast.LENGTH_SHORT).show();
-            }
+        setDynamicfragmentTotabLayout();
+    }
 
+    private void setDynamicfragmentTotabLayout() {
+        mViewModel.menueMutableliveData.observe(this, new Observer<ParentCategoryModel>() {
             @Override
-            public void onPageSelected(int position) {
-                Toast.makeText(getContext(), "on page selected", Toast.LENGTH_SHORT).show();
-            }
+            public void onChanged(ParentCategoryModel parentCategoryModel) {
+                if (parentCategoryModel.getProduct() != null && parentCategoryModel.getProduct().size() != 0) {
+                    String parentCategoryId = "";
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                Toast.makeText(getContext(), "on page scrolled state changer", Toast.LENGTH_SHORT).show();
-            }
+                    MenueAdapter menueAdapter = new MenueAdapter(getChildFragmentManager());
+                    int count = parentCategoryModel.getProduct().size();
+                    for (int i = 0; i < count; i++) {
+                        MenueDetailsFragment menueDetailsFragment = new MenueDetailsFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("parentCategoryId", parentCategoryModel.getProduct().get(i).getParent_category_id());
+                        menueDetailsFragment.setArguments(bundle);
+                        binding.menueTab.addTab(binding.menueTab.newTab().setText(parentCategoryModel.getProduct().get(i).getParent_category_name()));
+                        menueAdapter.addFrag(menueDetailsFragment, parentCategoryModel.getProduct().get(i).getParent_category_name());
+                    }
 
+
+                    binding.pager.setAdapter(menueAdapter);
+                    binding.pager.setCurrentItem(0);
+
+                }
+            }
         });
-        return root;
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(MenueViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
 
 }

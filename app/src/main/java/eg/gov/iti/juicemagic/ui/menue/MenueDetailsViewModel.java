@@ -14,8 +14,8 @@ public class MenueDetailsViewModel extends ViewModel {
     public MutableLiveData<SubCategoryModel> menueDetailsMutableLiveData = new
             MutableLiveData<>();
 
-    public void getSubCategory() {
-        Call<SubCategoryModel> call = JuiceRetrofit.getInstance().getJuice().getSubCategory("en", "", "");
+    public void getSubCategory(String parentCategoryId) {
+        Call<SubCategoryModel> call = JuiceRetrofit.getInstance().getJuice().getSubCategory("en", "", parentCategoryId);
         call.enqueue(new Callback<SubCategoryModel>() {
             @Override
             public void onResponse(Call<SubCategoryModel> call, Response<SubCategoryModel> response) {

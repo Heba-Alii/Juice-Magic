@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menue_details_constraint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/menue_details_circle_imgView"
@@ -57,13 +57,14 @@
 
                 <TextView
                     android:id="@+id/menue_name_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="128dp"
 
                     android:text="Orange Juice"
                     android:textColor="@color/orange"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/fav_btn"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -86,8 +87,12 @@
 
                 <ImageButton
                     android:id="@+id/fav_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="17dp"
+                    android:layout_height="14dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                 android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/ic_baseline_favorite_border_24"
                     app:layout_constraintBottom_toBottomOf="@id/menue_name_tv"
                     app:layout_constraintEnd_toEndOf="parent"

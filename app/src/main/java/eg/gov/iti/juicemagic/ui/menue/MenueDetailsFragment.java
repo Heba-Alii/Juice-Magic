@@ -29,8 +29,7 @@ public class MenueDetailsFragment extends Fragment {
         View root = binding.getRoot();
         mViewModel = ViewModelProviders.of(this).get(MenueDetailsViewModel.class);
 
-        mViewModel.getSubCategory();
-        //MenueAdapter menueAdapter = new MenueAdapter(getActivity().getSupportFragmentManager());
+        mViewModel.getSubCategory(getArguments().getString("parentCategoryId"));
         MenueDetailsAdapter menueDetailsAdapter=new MenueDetailsAdapter();
         binding.menueRecycler.setAdapter(menueDetailsAdapter);
 
