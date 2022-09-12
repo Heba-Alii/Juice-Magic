@@ -51,6 +51,10 @@
         android:name="eg.gov.iti.juicemagic.ui.menue.MenueFragment"
         android:label="@string/menu_login"
         tools:layout="@layout/fragment_menue" >
-
+<argument
+    android:name="parentCategoryId"
+    app:argType="string"
+    app:nullable="false"
+    />
     </fragment>
 </navigation>

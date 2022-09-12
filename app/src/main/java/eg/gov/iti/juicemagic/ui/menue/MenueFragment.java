@@ -30,6 +30,8 @@ public class MenueFragment extends Fragment {
     private ParentCategoryModel parentCategoryModel;
     private SubCategoryModel subCategoryModel;
     private CategoryMenueAdapter categoryMenueAdapter;
+    private MenueDetailsFragment menueDetailsFragment;
+    private MenueDetailsAdapter menueDetailsAdapter;
 
 
     @Override
@@ -53,11 +55,7 @@ public class MenueFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 binding.pager.setCurrentItem(tab.getPosition());
-//                for (int i=0; i < categoryMenueAdapter.getItemCount();i++){
-//                binding.pager.setCurrentItem(getArguments().getInt("categoyId"));
-//                binding.menueTab.addTab(binding.menueTab.newTab().setText(parentCategoryModel.getProduct().get(i).getParent_category_name()));
-//              tab.select();
-//               }
+                tab.select();
             }
 
             @Override
@@ -78,10 +76,11 @@ public class MenueFragment extends Fragment {
             @Override
             public void onChanged(ParentCategoryModel parentCategoryModel) {
                 if (parentCategoryModel.getProduct() != null && parentCategoryModel.getProduct().size() != 0) {
-                    String parentCategoryId = "";
+
 
                     MenueAdapter menueAdapter = new MenueAdapter(getChildFragmentManager());
                     int count = parentCategoryModel.getProduct().size();
+
                     for (int i = 0; i < count; i++) {
                         MenueDetailsFragment menueDetailsFragment = new MenueDetailsFragment();
                         Bundle bundle = new Bundle();
@@ -89,11 +88,13 @@ public class MenueFragment extends Fragment {
                         menueDetailsFragment.setArguments(bundle);
                         binding.menueTab.addTab(binding.menueTab.newTab().setText(parentCategoryModel.getProduct().get(i).getParent_category_name()));
                         menueAdapter.addFrag(menueDetailsFragment, parentCategoryModel.getProduct().get(i).getParent_category_name());
+
                     }
 
-
                     binding.pager.setAdapter(menueAdapter);
-                    binding.pager.setCurrentItem(0);
+                    //  String categoryId = getArguments().getString("parentCategoryId");
+                    int index = getArguments().getInt("index");
+                    binding.pager.setCurrentItem(index);
 
                 }
             }

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
+import eg.gov.iti.juicemagic.ui.menue.MenueFragment;
 
 public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdapter.CategoryViewHolder> {
     private ArrayList<JuiceModel.Category> juiceList = new ArrayList<>();
@@ -40,8 +41,11 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
         holder.categoryImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MenueFragment menueFragment=new MenueFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("categoyId", category.getParent_category_id());
+               // bundle.putString("parentCategoryId", category.getParent_category_id());
+                bundle.putInt("index",position);
+                menueFragment.setArguments(bundle);
                 Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_menue, bundle);
             }
         });
