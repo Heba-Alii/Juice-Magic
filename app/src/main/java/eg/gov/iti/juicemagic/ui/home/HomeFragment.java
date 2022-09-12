@@ -75,8 +75,6 @@ public class HomeFragment extends Fragment {
                 if (juiceModel.getOffers() != null && juiceModel.getOffers().size() != 0) {
                     offersAdapter.setList(juiceModel.getOffers());
                 }
-                //System.out.println(juiceModel.getCategories().get(0).getParent_category_name());
-                // Log.e("TAG", "onChanged: " +juiceModel.getCategories().get(0).getParent_category_name() );
             }
         });
 //        binding.categoryRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));

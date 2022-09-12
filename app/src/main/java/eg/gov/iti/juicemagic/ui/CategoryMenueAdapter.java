@@ -1,5 +1,6 @@
 package eg.gov.iti.juicemagic.ui;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
     public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new CategoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.menue_items_layout, parent, false));
     }
+
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         JuiceModel.Category category = juiceList.get(position);
@@ -38,8 +40,9 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
         holder.categoryImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_menue);
-
+                Bundle bundle = new Bundle();
+                bundle.putString("categoyId", category.getParent_category_id());
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_menue, bundle);
             }
         });
 

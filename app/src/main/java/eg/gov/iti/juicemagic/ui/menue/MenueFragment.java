@@ -18,6 +18,7 @@ import eg.gov.iti.juicemagic.databinding.FragmentMenueBinding;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.ParentCategoryModel;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
+import eg.gov.iti.juicemagic.ui.CategoryMenueAdapter;
 
 public class MenueFragment extends Fragment {
 
@@ -28,6 +29,7 @@ public class MenueFragment extends Fragment {
     private ViewPager viewPager;
     private ParentCategoryModel parentCategoryModel;
     private SubCategoryModel subCategoryModel;
+    private CategoryMenueAdapter categoryMenueAdapter;
 
 
     @Override
@@ -51,6 +53,11 @@ public class MenueFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 binding.pager.setCurrentItem(tab.getPosition());
+//                for (int i=0; i < categoryMenueAdapter.getItemCount();i++){
+//                binding.pager.setCurrentItem(getArguments().getInt("categoyId"));
+//                binding.menueTab.addTab(binding.menueTab.newTab().setText(parentCategoryModel.getProduct().get(i).getParent_category_name()));
+//              tab.select();
+//               }
             }
 
             @Override
