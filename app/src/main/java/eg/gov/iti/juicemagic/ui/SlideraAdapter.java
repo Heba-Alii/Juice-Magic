@@ -46,7 +46,7 @@ public class SlideraAdapter extends SliderViewAdapter<SlideraAdapter.SliderAdapt
         return juiceList.size();
     }
 
-    public class SliderAdapterVH extends SlideraAdapter.ViewHolder {
+    public class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
         ImageView sliderImages;
 
         public SliderAdapterVH(@NonNull View itemView) {

@@ -7,6 +7,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -33,16 +35,21 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
     public void onBindViewHolder(@NonNull MenueDetailsViewHolder holder, int position) {
         JuiceModel.Latest subCategoryModel = menueDetailsList.get(position);
         holder.menueNameTxt.setText(subCategoryModel.getSub_category_name());
-if (subCategoryModel.getSizes().stream().count()!=0){
-    holder.menuePriceTxt.setText(subCategoryModel.getSizes().get(0).getSub_category_size_price()+" "+ "BHD");
+        if (subCategoryModel.getSizes().stream().count() != 0) {
+            holder.menuePriceTxt.setText(subCategoryModel.getSizes().get(0).getSub_category_size_price() + " " + "BHD");
+        } else {
+            holder.menuePriceTxt.setText("BHD");
         }
-else {
- holder.menuePriceTxt.setText("BHD");
-}
         Glide.with(holder.itemView)
                 .load(subCategoryModel.getSub_category_image()).placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.menueDetailsImg);
+        holder.menueDetailsCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details);
+            }
+        });
     }
 
     @Override
@@ -62,6 +69,7 @@ else {
         TextView menuePriceTxt;
         ImageButton favBtn;
         ImageButton cartBtn;
+        CardView menueDetailsCV;
 
         public MenueDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +78,7 @@ else {
             menuePriceTxt = itemView.findViewById(R.id.menue_price_tv);
             favBtn = itemView.findViewById(R.id.fav_btn);
             cartBtn = itemView.findViewById(R.id.card_btn);
+            menueDetailsCV = itemView.findViewById(R.id.menue_details_CV);
 
         }
     }
