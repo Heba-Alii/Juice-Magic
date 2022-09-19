@@ -1,5 +1,6 @@
 package eg.gov.iti.juicemagic.ui.menue;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
+import eg.gov.iti.juicemagic.ui.details.CardMenueDetails;
 //import eg.gov.iti.recyclerview.R;
 
 public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapter.MenueDetailsViewHolder> {
@@ -47,7 +49,11 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
         holder.menueDetailsCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details);
+                CardMenueDetails cardMenueDetails=new CardMenueDetails();
+                Bundle bundle=new Bundle();
+                bundle.putString("categoryId", subCategoryModel.getParent_category_id());
+                cardMenueDetails.setArguments(bundle);
+                Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details,bundle);
             }
         });
     }

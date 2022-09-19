@@ -9,8 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#DD6C28</color>
     <color name="yellow">#e6e50e</color>
+    <color name="gold">#FBDF07</color>
     <color name="green">#ABABAB29</color>
     <color name="gary">#1E1E1E29</color>
+    <color name="gray">#B2AB8C</color>
     <color name="simon">#FFDCC6</color>
     <color name="red">#E74A26</color>
 </resources>

@@ -19,8 +19,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 <style name="RatingBar" parent="Theme.AppCompat">
-    <item name="colorControlNormal">@color/gary</item>
-    <item name="colorControlActivated">@color/yellow</item>
+    <item name="colorControlNormal">@color/gray</item>
+    <item name="colorControlActivated">@color/gold</item>
 
 </style>
     <style name="Theme.JuiceMagic.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
