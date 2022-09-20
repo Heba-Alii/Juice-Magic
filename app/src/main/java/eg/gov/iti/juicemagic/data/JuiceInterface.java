@@ -27,4 +27,8 @@ public interface JuiceInterface {
     @GET("get-sub-categories.php?")
     public Call<SubCategoryModel> getSubCategory(@Query("lang") String lang, @Query("client_id") String clientId,
                                                  @Query("parent_category_id") String parentcategoryId);
+
+    @GET("get-sub-category-by-id.php")
+    public Call<SubCategoryModel> getDetails(@Query("lang") String lang, @Query("client_id") String clientId,
+                                             @Query("sub_category_id") String subCategoryId);
 }

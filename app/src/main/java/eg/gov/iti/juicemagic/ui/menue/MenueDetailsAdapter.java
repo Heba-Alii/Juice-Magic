@@ -49,11 +49,11 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
         holder.menueDetailsCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CardMenueDetails cardMenueDetails=new CardMenueDetails();
-                Bundle bundle=new Bundle();
-                bundle.putString("categoryId", subCategoryModel.getParent_category_id());
+                CardMenueDetails cardMenueDetails = new CardMenueDetails();
+                Bundle bundle = new Bundle();
+                bundle.putString("subCategoryId", subCategoryModel.getSub_category_id());
                 cardMenueDetails.setArguments(bundle);
-                Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details,bundle);
+                Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
             }
         });
     }

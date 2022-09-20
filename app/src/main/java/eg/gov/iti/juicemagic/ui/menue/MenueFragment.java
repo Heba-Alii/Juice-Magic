@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -40,6 +41,8 @@ public class MenueFragment extends Fragment {
 
         binding = FragmentMenueBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
         mViewModel = ViewModelProviders.of(this).get(MenueViewModel.class);
         mViewModel.getMenue();
         initView();

@@ -79,6 +79,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:21.1.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'com.github.travijuu:numberpicker:1.0.7'
 
 }
 //apply plugin: 'com.google.gms.google-services'
