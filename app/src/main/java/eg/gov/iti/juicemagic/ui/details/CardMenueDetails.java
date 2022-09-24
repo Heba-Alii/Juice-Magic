@@ -107,6 +107,7 @@ public class CardMenueDetails extends Fragment {
                             .fitCenter()
                             .into(binding.imgItem);
                     binding.itemRating.setRating(subCategoryModel.getProduct().get(0).getEvaluate());
+                   // binding.itemRating.setRating(3);
                 }
             }
         });
