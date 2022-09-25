@@ -1,8 +1,10 @@
 package eg.gov.iti.juicemagic.data;
 
+import eg.gov.iti.juicemagic.pojo.Additions_Model;
 import eg.gov.iti.juicemagic.pojo.AuthModel;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.ParentCategoryModel;
+import eg.gov.iti.juicemagic.pojo.Remove_Response;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 import eg.gov.iti.juicemagic.pojo.UsersModel;
 import retrofit2.Call;
@@ -31,4 +33,12 @@ public interface JuiceInterface {
     @GET("get-sub-category-by-id.php")
     public Call<SubCategoryModel> getDetails(@Query("lang") String lang, @Query("client_id") String clientId,
                                              @Query("sub_category_id") String subCategoryId);
+
+    @GET("get-addition-prices.php?")
+    public Call<Additions_Model> get_Additions(@Query("lang") String lang, @Query("country_id") String country_id,
+                                               @Query("sub_category_id") String parent_category_id);
+
+    @GET("get-removes.php")
+    public Call<Remove_Response> get_removes(@Query("lang") String lang,
+                                             @Query("sub_category_id") String parent_category_id);
 }

@@ -54,7 +54,7 @@ public class CardMenueDetails extends Fragment {
         //ratingBar
         LayerDrawable stars = (LayerDrawable) binding.itemRating.getProgressDrawable();
         stars.getDrawable(1).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
-        //Expand Arrow Button
+        //Expand Arrow Button Additions
         binding.arrowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,17 +70,33 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+        //Without Expand Arrow Button
         binding.arrowBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (binding.hiddenView2.getVisibility()==View.VISIBLE){
+                if (binding.hiddenView2.getVisibility() == View.VISIBLE) {
                     TransitionManager.beginDelayedTransition(binding.consraintLayout, new AutoTransition());
                     binding.hiddenView2.setVisibility(View.GONE);
                     binding.arrowBtn3.setImageResource(R.drawable.ic_baseline_arrow_forward_ios_24);
-                }else {
+                } else {
                     TransitionManager.beginDelayedTransition(binding.consraintLayout, new AutoTransition());
                     binding.hiddenView2.setVisibility(View.VISIBLE);
                     binding.arrowBtn3.setImageResource(R.drawable.ic_baseline_expand_more_24);
+                }
+            }
+        });
+        //AddNotes Expand Arrow Button
+        binding.arrowBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (binding.hiddenWithoutView.getVisibility() == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition(binding.consraintLayout, new AutoTransition());
+                    binding.hiddenWithoutView.setVisibility(View.GONE);
+                    binding.arrowBtn2.setImageResource(R.drawable.ic_baseline_arrow_forward_ios_24);
+                } else {
+                    TransitionManager.beginDelayedTransition(binding.consraintLayout, new AutoTransition());
+                    binding.hiddenWithoutView.setVisibility(View.VISIBLE);
+                    binding.arrowBtn2.setImageResource(R.drawable.ic_baseline_expand_more_24);
                 }
             }
         });
@@ -107,7 +123,7 @@ public class CardMenueDetails extends Fragment {
                             .fitCenter()
                             .into(binding.imgItem);
                     binding.itemRating.setRating(subCategoryModel.getProduct().get(0).getEvaluate());
-                   // binding.itemRating.setRating(3);
+                    // binding.itemRating.setRating(3);
                 }
             }
         });
