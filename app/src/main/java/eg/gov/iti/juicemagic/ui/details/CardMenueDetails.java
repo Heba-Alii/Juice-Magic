@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -26,10 +27,13 @@ import com.bumptech.glide.Glide;
 
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentCardMenueDetailsBinding;
+import eg.gov.iti.juicemagic.pojo.Additions_Model;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
+import eg.gov.iti.juicemagic.pojo.Remove_Response;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 import eg.gov.iti.juicemagic.ui.JuiceViewModel;
 import eg.gov.iti.juicemagic.ui.SideMenue;
+import eg.gov.iti.juicemagic.ui.menue.MenueViewModel;
 
 public class CardMenueDetails extends Fragment {
 
@@ -49,8 +53,23 @@ public class CardMenueDetails extends Fragment {
         //to hide toolbar in this fragment
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         mViewModel = ViewModelProviders.of(this).get(CardMenueDetailsViewModel.class);
+        //linear layout RecyclerView
+        LinearLayoutManager addition = new LinearLayoutManager(requireActivity());
+        LinearLayoutManager remove = new LinearLayoutManager(requireActivity());
+        addition.setOrientation(LinearLayoutManager.VERTICAL);
+        remove.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.additionRecyclerView.setLayoutManager(addition);
+        binding.withoutRecyclerView.setLayoutManager(remove);
+        //My Adapters
+        AdditionAdapter additionAdapter = new AdditionAdapter();
+        RemoveAdapter removeAdapter = new RemoveAdapter();
+        binding.withoutRecyclerView.setAdapter(removeAdapter);
+        binding.additionRecyclerView.setAdapter(additionAdapter);
         String id = getArguments().getString("subCategoryId");
         mViewModel.getItemDetails(id);
+        mViewModel.getAddition(id);
+        mViewModel.getRemoves(id);
+        // mViewModel.getAddition(id);
         //ratingBar
         LayerDrawable stars = (LayerDrawable) binding.itemRating.getProgressDrawable();
         stars.getDrawable(1).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
@@ -58,6 +77,7 @@ public class CardMenueDetails extends Fragment {
         binding.arrowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (binding.hiddenView.getVisibility() == View.VISIBLE) {
                     TransitionManager.beginDelayedTransition(binding.consraintLayout, new AutoTransition());
                     binding.hiddenView.setVisibility(View.GONE);
@@ -65,6 +85,7 @@ public class CardMenueDetails extends Fragment {
                 } else {
                     TransitionManager.beginDelayedTransition(binding.consraintLayout, new AutoTransition());
                     binding.hiddenView.setVisibility(View.VISIBLE);
+
                     binding.arrowBtn.setImageResource(R.drawable.ic_baseline_expand_more_24);
 
                 }
@@ -100,6 +121,7 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+
         binding.circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,6 +147,36 @@ public class CardMenueDetails extends Fragment {
                     binding.itemRating.setRating(subCategoryModel.getProduct().get(0).getEvaluate());
                     // binding.itemRating.setRating(3);
                 }
+            }
+        });
+        //addition Api
+        mViewModel.additionMutableLiveData.observe(this, new Observer<Additions_Model>() {
+            @Override
+            public void onChanged(Additions_Model additions_model) {
+                if (additions_model.getProduct() != null && additions_model.getProduct().size() != 0) {
+                    additionAdapter.setList(additions_model.getProduct());
+                    Log.e("TAG", "onChanged: onchange " + additions_model.getProduct());
+
+                } else {
+                    Log.e("TAG", "onChanged: on change size" + additions_model.getProduct().size());
+                    binding.additionText.setVisibility(View.GONE);
+                    binding.arrowBtn.setVisibility(View.GONE);
+                    binding.textView4.setVisibility(View.GONE);
+                }
+            }
+        });
+        //Remove Api
+        mViewModel.removeResponseMutableLiveData.observe(this, new Observer<Remove_Response>() {
+            @Override
+            public void onChanged(Remove_Response remove_response) {
+                if (remove_response.getProduct() != null && remove_response.getProduct().size() != 0) {
+                    removeAdapter.setList(remove_response.getProduct());
+                } else {
+                    binding.withoutTxt.setVisibility(View.GONE);
+                    binding.arrowBtn2.setVisibility(View.GONE);
+                    binding.textView5.setVisibility(View.GONE);
+                }
+
             }
         });
         return root;

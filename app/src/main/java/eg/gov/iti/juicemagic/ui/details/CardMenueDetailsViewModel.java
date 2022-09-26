@@ -24,17 +24,17 @@ public class CardMenueDetailsViewModel extends ViewModel {
             @Override
             public void onResponse(Call<SubCategoryModel> call, Response<SubCategoryModel> response) {
                 if (response.body().getSuccess() == 1) {
-                    Log.e("TAG", "onResponse: " + response.body());
+                    Log.e("TAG", "onResponse: on Respone Addition" + response.body());
                     menueDetailsMutableLiveData.setValue(response.body());
 
                 } else {
-                    Log.e("TAG", "onResponse: failed" + response.body());
+                    Log.e("TAG", "onResponse: Addition" + response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<SubCategoryModel> call, Throwable t) {
-                Log.e("TAG", "onFailure: " + t.getMessage());
+                Log.e("TAG", "onFailure: Failure Addition" + t.getMessage());
             }
         });
 

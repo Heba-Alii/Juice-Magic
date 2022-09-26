@@ -10,6 +10,7 @@
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/edit_text_numbers.xml" value="0.184" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.126" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.2115" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_expand_more_24.xml" value="0.1505" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.2115" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.126" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_launcher_background.xml" value="0.126" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/activity_side_menue.xml" value="0.17980072463768115" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/activity_tool_bar.xml" value="0.1947463768115942" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/layout/addition_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/app_bar_side_menue.xml" value="0.17980072463768115" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/content_side_menue.xml" value="0.17980072463768115" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/fragment_card_menue_details.xml" value="0.25" />
@@ -38,6 +40,7 @@
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/most_selling_items_layout.xml" value="0.17980072463768115" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/nav_header_side_menue.xml" value="0.16" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/offers_items_layout.xml" value="0.17980072463768115" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/layout/remove_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/slider_layout.xml" value="0.15217391304347827" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/tab_layout.xml" value="0.1947463768115942" />
         <entry key="..\:/Emcan Projects/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
