@@ -22,14 +22,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentCardMenueDetailsBinding;
+import eg.gov.iti.juicemagic.pojo.AddCart_Model;
 import eg.gov.iti.juicemagic.pojo.Additions_Model;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.Remove_Response;
+import eg.gov.iti.juicemagic.pojo.ResponseCart_Model;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 import eg.gov.iti.juicemagic.ui.JuiceViewModel;
 import eg.gov.iti.juicemagic.ui.SideMenue;
@@ -40,6 +43,8 @@ public class CardMenueDetails extends Fragment {
     private CardMenueDetailsViewModel mViewModel;
     private FragmentCardMenueDetailsBinding binding;
     SideMenue sideMenue;
+    String addition_id = "";
+    String remove_id = "";
 
     public static CardMenueDetails newInstance() {
         return new CardMenueDetails();
@@ -60,16 +65,17 @@ public class CardMenueDetails extends Fragment {
         remove.setOrientation(LinearLayoutManager.VERTICAL);
         binding.additionRecyclerView.setLayoutManager(addition);
         binding.withoutRecyclerView.setLayoutManager(remove);
+        //Add to cart Adapters
+        AdditionAdapter additionAdapter = new AdditionAdapter(this);
+        RemoveAdapter removeAdapter = new RemoveAdapter(this);
         //My Adapters
-        AdditionAdapter additionAdapter = new AdditionAdapter();
-        RemoveAdapter removeAdapter = new RemoveAdapter();
         binding.withoutRecyclerView.setAdapter(removeAdapter);
         binding.additionRecyclerView.setAdapter(additionAdapter);
         String id = getArguments().getString("subCategoryId");
+
         mViewModel.getItemDetails(id);
         mViewModel.getAddition(id);
         mViewModel.getRemoves(id);
-        // mViewModel.getAddition(id);
         //ratingBar
         LayerDrawable stars = (LayerDrawable) binding.itemRating.getProgressDrawable();
         stars.getDrawable(1).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
@@ -121,7 +127,36 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+        //increament button
+        binding.incrementBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = binding.quantityTxt.getText().toString();
+                int count = Integer.parseInt(number);
+                count++;
+                binding.quantityTxt.setText(String.valueOf(count));
 
+            }
+        });
+        //decrement Button
+        binding.decrementBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = binding.quantityTxt.getText().toString();
+                int count = Integer.parseInt(number);
+                count--;
+                binding.quantityTxt.setText(String.valueOf(count));
+            }
+        });
+        //add to cart button
+        binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddCart_Model addCartModel = new AddCart_Model("en", "1", binding.quantityTxt.getText().toString(), "1", id, addition_id, remove_id, binding.addNoteET.getText().toString());
+                mViewModel.addToCart(addCartModel);
+
+            }
+        });
         binding.circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,7 +214,32 @@ public class CardMenueDetails extends Fragment {
 
             }
         });
+        mViewModel.responseCart_modelMutableLiveData.observe(this, new Observer<ResponseCart_Model>() {
+            @Override
+            public void onChanged(ResponseCart_Model responseCart_model) {
+                if (responseCart_model.getSuccess() == 1) {
+                    Log.e("TAG", "onChanged: add to cart on change " + responseCart_model.getProduct());
+                    Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Log.e("TAG", "onChanged: add to cart failed on change" + responseCart_model.getMessage());
+                }
+            }
+        });
         return root;
+    }
+
+    //Add addition To Cart
+    public void addditionAdapter(String addition_id) {
+        this.addition_id = addition_id;
+        Log.e("TAG", "addditionAdapter: addition_id is" + addition_id);
+
+    }
+
+    //Add remove to cart
+    public void removeAdapter(String remove_id) {
+        this.remove_id = remove_id;
+        Log.e("TAG", "removeAdapter:remove id " + remove_id);
     }
 
     @Override

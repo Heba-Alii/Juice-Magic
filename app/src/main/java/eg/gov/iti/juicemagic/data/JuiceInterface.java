@@ -1,7 +1,10 @@
 package eg.gov.iti.juicemagic.data;
 
+import eg.gov.iti.juicemagic.pojo.AddCart_Model;
 import eg.gov.iti.juicemagic.pojo.Additions_Model;
 import eg.gov.iti.juicemagic.pojo.AuthModel;
+import eg.gov.iti.juicemagic.pojo.GetCart_Model;
+import eg.gov.iti.juicemagic.pojo.ResponseCart_Model;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.ParentCategoryModel;
 import eg.gov.iti.juicemagic.pojo.Remove_Response;
@@ -41,4 +44,10 @@ public interface JuiceInterface {
     @GET("get-removes.php")
     public Call<Remove_Response> get_removes(@Query("lang") String lang,
                                              @Query("sub_category_id") String parent_category_id);
+
+    @POST("add-to-cart.php")
+    public Call<ResponseCart_Model> addCart(@Body AddCart_Model addCartModel);
+
+    @GET("get-cart.php?")
+    public Call<GetCart_Model> getCart(@Query("lang") String lang, @Query("client_id") String client_id, @Query("client_address_id") String client_address_id);
 }
