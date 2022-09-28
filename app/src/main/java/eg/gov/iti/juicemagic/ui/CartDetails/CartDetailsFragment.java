@@ -32,8 +32,8 @@ public class CartDetailsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentCartDetailsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Cart");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+      //  ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Cart");
 
 
 

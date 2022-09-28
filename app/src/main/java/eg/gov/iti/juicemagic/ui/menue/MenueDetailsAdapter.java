@@ -57,7 +57,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
                 Bundle bundle = new Bundle();
                 bundle.putString("subCategoryId", subCategoryModel.getSub_category_id());
                 if (subCategoryModel.getSizes().stream().count()!=0) {
-                    bundle.putString("sizeId", subCategoryModel.getSizes().get(position).getSub_category_size_price_id());
+                    bundle.putString("sizeId", subCategoryModel.getSizes().get(0).getSub_category_size_price_id());
                 }else {
                     Toast.makeText(view.getContext(), "Not Available price Now", Toast.LENGTH_SHORT).show();
                 }
