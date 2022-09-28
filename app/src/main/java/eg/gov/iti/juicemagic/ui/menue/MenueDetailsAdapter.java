@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -55,7 +56,11 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
                 CardMenueDetails cardMenueDetails = new CardMenueDetails();
                 Bundle bundle = new Bundle();
                 bundle.putString("subCategoryId", subCategoryModel.getSub_category_id());
-                bundle.putString("sizeId",subCategoryModel.getSizes().get(0).getSub_category_size_price_id());
+                if (subCategoryModel.getSizes().stream().count()!=0) {
+                    bundle.putString("sizeId", subCategoryModel.getSizes().get(position).getSub_category_size_price_id());
+                }else {
+                    Toast.makeText(view.getContext(), "Not Available price Now", Toast.LENGTH_SHORT).show();
+                }
                 cardMenueDetails.setArguments(bundle);
                 Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
             }

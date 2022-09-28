@@ -162,6 +162,7 @@ public class CardMenueDetails extends Fragment {
             public void onClick(View view) {
                 AddCart_Model addCartModel = new AddCart_Model("en", "1", binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
                 mViewModel.addToCart(addCartModel);
+                Navigation.findNavController(view).navigate(R.id.action_nav_details_to_nav_cart);
 
             }
         });
