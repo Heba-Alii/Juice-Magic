@@ -36,6 +36,7 @@ import eg.gov.iti.juicemagic.pojo.ResponseCart_Model;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 import eg.gov.iti.juicemagic.ui.JuiceViewModel;
 import eg.gov.iti.juicemagic.ui.SideMenue;
+import eg.gov.iti.juicemagic.ui.menue.MenueDetailsAdapter;
 import eg.gov.iti.juicemagic.ui.menue.MenueViewModel;
 
 public class CardMenueDetails extends Fragment {
@@ -45,6 +46,7 @@ public class CardMenueDetails extends Fragment {
     SideMenue sideMenue;
     String addition_id = "";
     String remove_id = "";
+
 
     public static CardMenueDetails newInstance() {
         return new CardMenueDetails();
@@ -68,10 +70,12 @@ public class CardMenueDetails extends Fragment {
         //Add to cart Adapters
         AdditionAdapter additionAdapter = new AdditionAdapter(this);
         RemoveAdapter removeAdapter = new RemoveAdapter(this);
+        // MenueDetailsAdapter menueDetailsAdapter=new MenueDetailsAdapter(this);
         //My Adapters
         binding.withoutRecyclerView.setAdapter(removeAdapter);
         binding.additionRecyclerView.setAdapter(additionAdapter);
         String id = getArguments().getString("subCategoryId");
+        String sizeId = getArguments().getString("sizeId");
 
         mViewModel.getItemDetails(id);
         mViewModel.getAddition(id);
@@ -144,15 +148,19 @@ public class CardMenueDetails extends Fragment {
             public void onClick(View view) {
                 String number = binding.quantityTxt.getText().toString();
                 int count = Integer.parseInt(number);
-                count--;
-                binding.quantityTxt.setText(String.valueOf(count));
+                if (count > 1) {
+                    count--;
+                    binding.quantityTxt.setText(String.valueOf(count));
+                } else {
+                    Toast.makeText(getContext(), "Minimum quantity is ONE", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         //add to cart button
         binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddCart_Model addCartModel = new AddCart_Model("en", "1", binding.quantityTxt.getText().toString(), "1", id, addition_id, remove_id, binding.addNoteET.getText().toString());
+                AddCart_Model addCartModel = new AddCart_Model("en", "1", binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
                 mViewModel.addToCart(addCartModel);
 
             }
@@ -218,7 +226,6 @@ public class CardMenueDetails extends Fragment {
             @Override
             public void onChanged(ResponseCart_Model responseCart_model) {
                 if (responseCart_model.getSuccess() == 1) {
-                    Log.e("TAG", "onChanged: add to cart on change " + responseCart_model.getProduct());
                     Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -241,6 +248,7 @@ public class CardMenueDetails extends Fragment {
         this.remove_id = remove_id;
         Log.e("TAG", "removeAdapter:remove id " + remove_id);
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

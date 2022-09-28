@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import eg.gov.iti.juicemagic.databinding.FragmentMenueDetailsBinding;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
+import eg.gov.iti.juicemagic.ui.details.CardMenueDetails;
 
 public class MenueDetailsFragment extends Fragment {
     FragmentMenueDetailsBinding binding;

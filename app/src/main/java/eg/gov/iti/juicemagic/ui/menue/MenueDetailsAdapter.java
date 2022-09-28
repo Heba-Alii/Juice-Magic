@@ -25,6 +25,9 @@ import eg.gov.iti.juicemagic.ui.details.CardMenueDetails;
 
 public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapter.MenueDetailsViewHolder> {
     private ArrayList<JuiceModel.Latest> menueDetailsList = new ArrayList<>();
+    CardMenueDetails cardMenueDetails;
+
+
 
     @NonNull
     @Override
@@ -52,6 +55,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
                 CardMenueDetails cardMenueDetails = new CardMenueDetails();
                 Bundle bundle = new Bundle();
                 bundle.putString("subCategoryId", subCategoryModel.getSub_category_id());
+                bundle.putString("sizeId",subCategoryModel.getSizes().get(0).getSub_category_size_price_id());
                 cardMenueDetails.setArguments(bundle);
                 Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
             }
