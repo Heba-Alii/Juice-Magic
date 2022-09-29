@@ -34,6 +34,7 @@ import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.pojo.Remove_Response;
 import eg.gov.iti.juicemagic.pojo.ResponseCart_Model;
 import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
+import eg.gov.iti.juicemagic.ui.CartDetails.CartDetailsFragment;
 import eg.gov.iti.juicemagic.ui.JuiceViewModel;
 import eg.gov.iti.juicemagic.ui.SideMenue;
 import eg.gov.iti.juicemagic.ui.menue.MenueDetailsAdapter;
@@ -162,7 +163,10 @@ public class CardMenueDetails extends Fragment {
             public void onClick(View view) {
                 AddCart_Model addCartModel = new AddCart_Model("en", "1", binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
                 mViewModel.addToCart(addCartModel);
-                Navigation.findNavController(view).navigate(R.id.action_nav_details_to_nav_cart);
+//                CartDetailsFragment cartDetailsFragment=new CartDetailsFragment();
+//                Bundle bundle=new Bundle();
+//                bundle.putString("client_id",addCartModel.getSub_category_id());
+//                cartDetailsFragment.setArguments(bundle);
 
             }
         });
@@ -228,7 +232,7 @@ public class CardMenueDetails extends Fragment {
             public void onChanged(ResponseCart_Model responseCart_model) {
                 if (responseCart_model.getSuccess() == 1) {
                     Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
-
+                    Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
                 } else {
                     Log.e("TAG", "onChanged: add to cart failed on change" + responseCart_model.getMessage());
                 }
