@@ -66,25 +66,25 @@ public class CartDetailsFragment extends Fragment {
         cartDetailsViewModel.cartDetailsMutableLiveDat.observe(this, new Observer<GetCart_Model>() {
             @Override
             public void onChanged(GetCart_Model getCart_model) {
-                if (getCart_model.getProduct() != null && getCart_model.getProduct().size() != 0) {
-                    int count = getCart_model.getCount_all();
-                    for (int i = 0; i < count; i++) {
-                        binding.juiceName.setText(getCart_model.getProduct().get(i).getSub_category_name());
-                        Glide.with(binding.juiceImage)
-                                .load(getCart_model.getProduct().get(i).getSub_category_image())
-                                .fitCenter()
-                                .into(binding.juiceImage);
-                        binding.juicePrice.setText(getCart_model.getProduct().get(i).getPrice() + " " + "DHD");
-
-                        binding.quantityTxt.setText(getCart_model.getProduct().get(i).getQuantity());
-                        //additionCartAdapter.setList(getCart_model.getProduct().get(0).getAddition());
-                        removeCartAdapter.setList(getCart_model.getProduct());
-
-                        Log.e("TAG", "onChanged: CartDeatails" + getCart_model.getProduct());
-                    }
-                } else {
-                    Toast.makeText(getContext(), "not Addition added", Toast.LENGTH_SHORT).show();
-                }
+//                if (getCart_model.getProduct() != null && getCart_model.getProduct().size() != 0) {
+//                    int count = getCart_model.getCount_all();
+//                    for (int i = 0; i < count; i++) {
+//                        binding.juiceName.setText(getCart_model.getProduct().get(i).getSub_category_name());
+//                        Glide.with(binding.juiceImage)
+//                                .load(getCart_model.getProduct().get(i).getSub_category_image())
+//                                .fitCenter()
+//                                .into(binding.juiceImage);
+//                        binding.juicePrice.setText(getCart_model.getProduct().get(i).getPrice() + " " + "DHD");
+//
+//                        binding.quantityTxt.setText(getCart_model.getProduct().get(i).getQuantity());
+//                        //additionCartAdapter.setList(getCart_model.getProduct().get(0).getAddition());
+//                        removeCartAdapter.setList(getCart_model.getProduct());
+//
+//                        Log.e("TAG", "onChanged: CartDeatails" + getCart_model.getProduct());
+//                    }
+//                } else {
+//                    Toast.makeText(getContext(), "not Addition added", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 

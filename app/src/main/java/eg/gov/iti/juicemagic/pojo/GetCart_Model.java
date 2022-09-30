@@ -81,6 +81,16 @@ public class GetCart_Model implements Serializable {
         private Object image;
         private String price;
         private String client_id;
+        private String charge;
+        private String calendar_start;
+        private String total_amount;
+        private String check_discount;
+        private String vat;
+        private int discount_percentage;
+        private String total_amount_after_disc;
+        private String vat_value;
+        private String discount_value;
+        private String summary;
 
         public String getCart_id() {
             return cart_id;
@@ -225,19 +235,98 @@ public class GetCart_Model implements Serializable {
         public void setClient_id(String client_id) {
             this.client_id = client_id;
         }
-    }
 
-    public class Remove {
-        private String remove_name;
-
-        public String getRemove_name() {
-            return remove_name;
+        public String getCharge() {
+            return charge;
         }
 
-        public void setRemove_name(String remove_name) {
-            this.remove_name = remove_name;
+        public void setCharge(String charge) {
+            this.charge = charge;
         }
+
+        public String getCalendar_start() {
+            return calendar_start;
+        }
+
+        public void setCalendar_start(String calendar_start) {
+            this.calendar_start = calendar_start;
+        }
+
+        public String getTotal_amount() {
+            return total_amount;
+        }
+
+        public void setTotal_amount(String total_amount) {
+            this.total_amount = total_amount;
+        }
+
+        public String getCheck_discount() {
+            return check_discount;
+        }
+
+        public void setCheck_discount(String check_discount) {
+            this.check_discount = check_discount;
+        }
+
+        public String getVat() {
+            return vat;
+        }
+
+        public void setVat(String vat) {
+            this.vat = vat;
+        }
+
+        public int getDiscount_percentage() {
+            return discount_percentage;
+        }
+
+        public void setDiscount_percentage(int discount_percentage) {
+            this.discount_percentage = discount_percentage;
+        }
+
+        public String getTotal_amount_after_disc() {
+            return total_amount_after_disc;
+        }
+
+        public void setTotal_amount_after_disc(String total_amount_after_disc) {
+            this.total_amount_after_disc = total_amount_after_disc;
+        }
+
+        public String getVat_value() {
+            return vat_value;
+        }
+
+        public void setVat_value(String vat_value) {
+            this.vat_value = vat_value;
+        }
+
+        public String getDiscount_value() {
+            return discount_value;
+        }
+
+        public void setDiscount_value(String discount_value) {
+            this.discount_value = discount_value;
+        }
+
+        public String getSummary() {
+            return summary;
+        }
+
+        public void setSummary(String summary) {
+            this.summary = summary;
+        }
+
+        public class Remove {
+            private String remove_name;
+
+            public String getRemove_name() {
+                return remove_name;
+            }
+
+            public void setRemove_name(String remove_name) {
+                this.remove_name = remove_name;
+            }
+        }
+
+
     }
-
-
-}
