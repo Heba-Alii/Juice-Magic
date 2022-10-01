@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
@@ -77,7 +79,8 @@ public class CardMenueDetails extends Fragment {
         binding.additionRecyclerView.setAdapter(additionAdapter);
         String id = getArguments().getString("subCategoryId");
         String sizeId = getArguments().getString("sizeId");
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users" , Context.MODE_PRIVATE);
+        String clientId = sharedPreferences.getString("clientId", "");
         mViewModel.getItemDetails(id);
         mViewModel.getAddition(id);
         mViewModel.getRemoves(id);
@@ -161,7 +164,7 @@ public class CardMenueDetails extends Fragment {
         binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddCart_Model addCartModel = new AddCart_Model("en", "1", binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
+                AddCart_Model addCartModel = new AddCart_Model("en", clientId ,binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
                 mViewModel.addToCart(addCartModel);
 //                CartDetailsFragment cartDetailsFragment=new CartDetailsFragment();
 //                Bundle bundle=new Bundle();

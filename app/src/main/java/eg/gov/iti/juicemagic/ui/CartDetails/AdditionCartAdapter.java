@@ -18,7 +18,7 @@ import eg.gov.iti.juicemagic.pojo.GetCart_Model;
 //import eg.gov.iti.recyclerview.pojo.GetCart_Model;
 
 public class AdditionCartAdapter extends RecyclerView.Adapter<AdditionCartAdapter.AdditonCartViewHolder> {
-    private ArrayList<GetCart_Model.Product> additionCartList = new ArrayList<>();
+    private ArrayList<GetCart_Model.Addition> additionCartList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -29,9 +29,9 @@ public class AdditionCartAdapter extends RecyclerView.Adapter<AdditionCartAdapte
 
     @Override
     public void onBindViewHolder(@NonNull AdditonCartViewHolder holder, int position) {
-        GetCart_Model.Product getCartModel = additionCartList.get(position);
+        GetCart_Model.Addition getCartModel = additionCartList.get(position);
 
-            holder.user_addition_text.setText(getCartModel.getAddition().get(position).getAddition_name());
+            holder.user_addition_text.setText(getCartModel.getAddition_name());
 
     }
 
@@ -40,7 +40,7 @@ public class AdditionCartAdapter extends RecyclerView.Adapter<AdditionCartAdapte
         return additionCartList.size();
     }
 
-    public void setList(ArrayList<GetCart_Model.Product> additionCartList) {
+    public void setList(ArrayList<GetCart_Model.Addition> additionCartList) {
         this.additionCartList = additionCartList;
         notifyDataSetChanged();
     }

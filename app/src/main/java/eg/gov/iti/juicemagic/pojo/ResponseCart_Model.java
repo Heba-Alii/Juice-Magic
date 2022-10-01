@@ -35,7 +35,7 @@ public class ResponseCart_Model implements Serializable {
 
     public class Product {
         private int cart_id;
-        private int total;
+        private float total;
         private Object client_id;
 
         public int getCart_id() {
@@ -46,11 +46,11 @@ public class ResponseCart_Model implements Serializable {
             this.cart_id = cart_id;
         }
 
-        public int getTotal() {
+        public float getTotal() {
             return total;
         }
 
-        public void setTotal(int total) {
+        public void setTotal(float total) {
             this.total = total;
         }
 

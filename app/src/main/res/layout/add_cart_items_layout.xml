@@ -1,6 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/juice_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:paddingRight="20dp"
+            android:text="Cream of mushroom Soap"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/juice_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/juice_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/juice_name" />
+
+        <TextView
+            android:id="@+id/juice_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="1.600 BHD"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            app:layout_constraintStart_toStartOf="@+id/juice_name"
+            app:layout_constraintTop_toBottomOf="@+id/juice_name" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/decrement_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/green_increment_card"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/juice_price"
+            app:layout_constraintStart_toEndOf="@+id/juice_price"
+            app:layout_constraintTop_toTopOf="@+id/juice_price" />
+
+        <TextView
+            android:id="@+id/quantity_txt"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/green_quantity_text"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/decrement_btn"
+            app:layout_constraintEnd_toEndOf="@+id/increment_btn"
+            app:layout_constraintStart_toStartOf="@+id/decrement_btn"
+            app:layout_constraintTop_toTopOf="@+id/decrement_btn" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/increment_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_increment_card"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/juice_image"
+            app:layout_constraintTop_toTopOf="@+id/decrement_btn" />
+
+        <ImageView
+            android:id="@+id/delete_quntity_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_delete_24"
+            app:layout_constraintEnd_toEndOf="@+id/quantity_txt"
+            app:layout_constraintStart_toStartOf="@+id/decrement_btn"
+            app:layout_constraintTop_toBottomOf="@+id/quantity_txt" />
+
+        <TextView
+            android:id="@+id/addition_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:drawableStart="@drawable/ic_baseline_brunch_dining_24"
+            android:drawablePadding="5dp"
+            android:text="Addition"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/juice_price"
+            app:layout_constraintTop_toBottomOf="@+id/delete_quntity_btn" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_addition_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addition_txt"
+            app:layout_constraintTop_toBottomOf="@+id/addition_txt"
+            tools:listitem="@layout/addition_add_cart_layout" />
+
+        <TextView
+            android:id="@+id/without_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableStart="@drawable/ic_baseline_local_dining_24"
+            android:drawablePadding="5dp"
+            android:text="Without"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/addition_txt"
+            app:layout_constraintTop_toBottomOf="@+id/user_addition_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_remove_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@+id/user_addition_rv"
+            app:layout_constraintTop_toBottomOf="@+id/without_txt"
+            tools:listitem="@layout/remove_add_cart_layout" />
+
+        <TextView
+            android:id="@+id/addAnyNotes_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:text="Add any notes"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/without_txt"
+            app:layout_constraintTop_toBottomOf="@+id/user_remove_rv" />
+
+        <TextView
+            android:id="@+id/user_addNotes_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Extra Chocolate , nuts , a lot of ice"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="@+id/addAnyNotes_txt"
+            app:layout_constraintTop_toBottomOf="@+id/addAnyNotes_txt" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:background="@drawable/line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_addNotes_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

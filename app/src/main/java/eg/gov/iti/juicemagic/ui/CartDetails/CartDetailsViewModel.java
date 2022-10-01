@@ -14,8 +14,8 @@ import retrofit2.Response;
 public class CartDetailsViewModel extends ViewModel {
     public MutableLiveData<GetCart_Model> cartDetailsMutableLiveDat = new MutableLiveData<>();
 
-    public void getCart() {
-        Call<GetCart_Model> call = JuiceRetrofit.getInstance().getJuice().getCart("en", "1", "");
+    public void getCart(String clientId) {
+        Call<GetCart_Model> call = JuiceRetrofit.getInstance().getJuice().getCart("en", clientId, "");
         call.enqueue(new Callback<GetCart_Model>() {
             @Override
             public void onResponse(Call<GetCart_Model> call, Response<GetCart_Model> response) {
