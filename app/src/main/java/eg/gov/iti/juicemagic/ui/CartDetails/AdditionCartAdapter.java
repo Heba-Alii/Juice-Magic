@@ -31,7 +31,8 @@ public class AdditionCartAdapter extends RecyclerView.Adapter<AdditionCartAdapte
     public void onBindViewHolder(@NonNull AdditonCartViewHolder holder, int position) {
         GetCart_Model.Addition getCartModel = additionCartList.get(position);
 
-            holder.user_addition_text.setText(getCartModel.getAddition_name());
+    holder.user_addition_text.setText(getCartModel.getAddition_name());
+
 
     }
 
@@ -47,12 +48,14 @@ public class AdditionCartAdapter extends RecyclerView.Adapter<AdditionCartAdapte
 
     public class AdditonCartViewHolder extends RecyclerView.ViewHolder {
          TextView user_addition_text;
+        // TextView addition_txt;
 
 
         public AdditonCartViewHolder(@NonNull View itemView) {
             super(itemView);
 
             user_addition_text = itemView.findViewById(R.id.user_addition_text);
+      //  addition_txt=itemView.findViewById(R.id.addition_txt);
         }
     }
 }

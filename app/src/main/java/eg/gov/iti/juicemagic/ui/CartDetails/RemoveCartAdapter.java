@@ -17,7 +17,7 @@ import eg.gov.iti.juicemagic.pojo.GetCart_Model;
 //import eg.gov.iti.recyclerview.pojo.GetCart_Model;
 
 public class RemoveCartAdapter extends RecyclerView.Adapter<RemoveCartAdapter.RemoveCartViewHolder> {
-    private ArrayList<GetCart_Model.Product> removeCartList = new ArrayList<>();
+    private ArrayList<GetCart_Model.Remove> removeCartList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -28,9 +28,9 @@ public class RemoveCartAdapter extends RecyclerView.Adapter<RemoveCartAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RemoveCartViewHolder holder, int position) {
-        GetCart_Model.Product getCartModel = removeCartList.get(position);
+        GetCart_Model.Remove getCartModel = removeCartList.get(position);
 
-          holder.user_remove_text.setText(getCartModel.getRemove().get(0).getRemove_name());
+        holder.user_remove_text.setText(getCartModel.getRemove_name());
 
     }
 
@@ -39,7 +39,7 @@ public class RemoveCartAdapter extends RecyclerView.Adapter<RemoveCartAdapter.Re
         return removeCartList.size();
     }
 
-    public void setList(ArrayList<GetCart_Model.Product> removeCartList) {
+    public void setList(ArrayList<GetCart_Model.Remove> removeCartList) {
         this.removeCartList = removeCartList;
         notifyDataSetChanged();
     }

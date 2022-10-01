@@ -316,18 +316,18 @@ public class GetCart_Model implements Serializable {
             this.summary = summary;
         }
 
-        public class Remove {
-            private String remove_name;
 
-            public String getRemove_name() {
-                return remove_name;
-            }
+    }
 
-            public void setRemove_name(String remove_name) {
-                this.remove_name = remove_name;
-            }
+    public class Remove {
+        private String remove_name;
+
+        public String getRemove_name() {
+            return remove_name;
         }
 
-
+        public void setRemove_name(String remove_name) {
+            this.remove_name = remove_name;
+        }
     }
 }

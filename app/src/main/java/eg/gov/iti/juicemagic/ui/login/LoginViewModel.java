@@ -22,7 +22,7 @@ public class LoginViewModel extends ViewModel {
             public void onResponse(Call<AuthModel> call, Response<AuthModel> response) {
 
                     loginMutableLiveData.setValue(response.body());
-                Log.e("TAG", "onResponse: response"+response.body().getMessage() );
+                    Log.e("TAG", "onResponse: response" + response.body().getMessage());
 
             }
 

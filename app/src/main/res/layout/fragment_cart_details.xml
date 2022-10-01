@@ -9,7 +9,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -122,17 +124,29 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addtocart_items_rv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="400dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/delivery_btn"
-           />
+                tools:listitem="@layout/add_cart_items_layout" />
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addtocart_items_rv" />
 
             <TextView
                 android:id="@+id/paymeny_summaery_txt"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Payment Summary"
@@ -140,7 +154,7 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/addtocart_items_rv"
-                app:layout_constraintTop_toBottomOf="@+id/addtocart_items_rv" />
+                app:layout_constraintTop_toBottomOf="@+id/line" />
 
             <TextView
                 android:id="@+id/sub_toatl_text"
@@ -245,6 +259,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/add_items_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/add_items_btn" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

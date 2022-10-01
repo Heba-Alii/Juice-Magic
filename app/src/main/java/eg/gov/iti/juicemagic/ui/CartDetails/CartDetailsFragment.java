@@ -54,22 +54,15 @@ public class CartDetailsFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_nav_cart_to_nav_home);
             }
         });
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users" , Context.MODE_PRIVATE);
+        //to use client id from shared preference
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
         String clientId = sharedPreferences.getString("clientId", "");
         cartDetailsViewModel.getCart(clientId);
-//        LinearLayoutManager addition = new LinearLayoutManager(requireActivity());
-//        addition.setOrientation(LinearLayoutManager.VERTICAL);
-//        binding.userAdditionRv.setLayoutManager(addition);
-//        LinearLayoutManager remove = new LinearLayoutManager(requireActivity());
-//        remove.setOrientation(LinearLayoutManager.VERTICAL);
-//        binding.userRemoveRv.setLayoutManager(remove);
+
         LinearLayoutManager addCart = new LinearLayoutManager(requireActivity());
         addCart.setOrientation(LinearLayoutManager.VERTICAL);
         binding.addtocartItemsRv.setLayoutManager(addCart);
-//        AdditionCartAdapter additionCartAdapter = new AdditionCartAdapter();
-//        binding.userAdditionRv.setAdapter(additionCartAdapter);
-//        RemoveCartAdapter removeCartAdapter = new RemoveCartAdapter();
-//        binding.userRemoveRv.setAdapter(removeCartAdapter);
+
         AddCartAdapter addCartAdapter = new AddCartAdapter();
         binding.addtocartItemsRv.setAdapter(addCartAdapter);
         cartDetailsViewModel.cartDetailsMutableLiveDat.observe(this, new Observer<GetCart_Model>() {
@@ -81,11 +74,8 @@ public class CartDetailsFragment extends Fragment {
                     binding.subToatlPrice.setText(getCart_model.getProduct().get(count).getTotal_amount());
                     binding.vatPrice.setText(getCart_model.getProduct().get(count).getVat_value());
                     binding.netTotalPrice.setText(getCart_model.getProduct().get(count).getSummary());
-                    //additionCartAdapter.setList(getCart_model.getProduct());
-                    // removeCartAdapter.setList(getCart_model.getProduct());
-
                     Log.e("TAG", "onChanged: CartDeatails" + getCart_model.getProduct());
-                    // }
+
                 } else {
                     Toast.makeText(getContext(), "not Addition added", Toast.LENGTH_SHORT).show();
                 }

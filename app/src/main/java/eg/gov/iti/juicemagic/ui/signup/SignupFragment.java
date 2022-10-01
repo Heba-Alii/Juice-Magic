@@ -25,6 +25,7 @@ import eg.gov.iti.juicemagic.pojo.UsersModel;
 import eg.gov.iti.juicemagic.ui.home.HomeFragment;
 import eg.gov.iti.juicemagic.ui.login.LoginFragment;
 
+
 public class SignupFragment extends Fragment {
 
     private FragmentSignupBinding binding;
