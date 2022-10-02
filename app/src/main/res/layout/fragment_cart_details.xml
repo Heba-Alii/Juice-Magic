@@ -10,8 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
-        >
+        android:fillViewport="true">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,16 +127,16 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/delivery_btn"
                 tools:listitem="@layout/add_cart_items_layout" />
+
             <TextView
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/line"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +147,7 @@
                 android:layout_width="wrap_content"
 
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Payment Summary"
                 android:textColor="@color/black"
                 android:textSize="18dp"
@@ -160,7 +159,7 @@
                 android:id="@+id/sub_toatl_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:text="Sub Total :"
                 android:textSize="17dp"
                 app:layout_constraintStart_toStartOf="@+id/paymeny_summaery_txt"
@@ -202,7 +201,7 @@
                 android:id="@+id/net_total_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:text="Net Total :"
                 android:textColor="@color/black"
                 android:textSize="18dp"
@@ -214,20 +213,21 @@
                 android:id="@+id/net_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="16dp"
                 android:text="20.00 BHD"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="@id/net_total_txt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/net_total_txt" />
+                app:layout_constraintTop_toTopOf="@id/net_total_txt"
+                app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/add_items_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
 
-                android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/white_card_with_orange_border"
                 android:paddingStart="40dp"
@@ -238,8 +238,8 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/checkout_btn"
-                app:layout_constraintStart_toStartOf="@id/net_total_txt"
+
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/net_total_txt" />
 
             <androidx.appcompat.widget.AppCompatButton
