@@ -79,7 +79,8 @@ public class CardMenueDetails extends Fragment {
         binding.additionRecyclerView.setAdapter(additionAdapter);
         String id = getArguments().getString("subCategoryId");
         String sizeId = getArguments().getString("sizeId");
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users" , Context.MODE_PRIVATE);
+        //client Id
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
         String clientId = sharedPreferences.getString("clientId", "");
         mViewModel.getItemDetails(id);
         mViewModel.getAddition(id);
@@ -164,7 +165,7 @@ public class CardMenueDetails extends Fragment {
         binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddCart_Model addCartModel = new AddCart_Model("en", clientId ,binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
+                AddCart_Model addCartModel = new AddCart_Model("en", clientId, binding.quantityTxt.getText().toString(), sizeId, id, addition_id, remove_id, binding.addNoteET.getText().toString());
                 mViewModel.addToCart(addCartModel);
 //                CartDetailsFragment cartDetailsFragment=new CartDetailsFragment();
 //                Bundle bundle=new Bundle();
@@ -177,6 +178,7 @@ public class CardMenueDetails extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_nav_details_to_nav_menue);
+
             }
         });
         Log.e("TAG", "onCreateView: " + id);
@@ -233,10 +235,12 @@ public class CardMenueDetails extends Fragment {
         mViewModel.responseCart_modelMutableLiveData.observe(this, new Observer<ResponseCart_Model>() {
             @Override
             public void onChanged(ResponseCart_Model responseCart_model) {
-                if (responseCart_model.getSuccess() == 1) {
+                if (responseCart_model.getSuccess() == 1 && clientId != "") {
                     Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
                 } else {
+                    Toast.makeText(getContext(), "please Login", Toast.LENGTH_SHORT).show();
+
                     Log.e("TAG", "onChanged: add to cart failed on change" + responseCart_model.getMessage());
                 }
             }
