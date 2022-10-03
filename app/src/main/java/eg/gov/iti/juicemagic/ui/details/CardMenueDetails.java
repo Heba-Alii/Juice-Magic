@@ -60,9 +60,11 @@ public class CardMenueDetails extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentCardMenueDetailsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
         //to hide toolbar in this fragment
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         mViewModel = ViewModelProviders.of(this).get(CardMenueDetailsViewModel.class);
+
         //linear layout RecyclerView
         LinearLayoutManager addition = new LinearLayoutManager(requireActivity());
         LinearLayoutManager remove = new LinearLayoutManager(requireActivity());
@@ -70,24 +72,29 @@ public class CardMenueDetails extends Fragment {
         remove.setOrientation(LinearLayoutManager.VERTICAL);
         binding.additionRecyclerView.setLayoutManager(addition);
         binding.withoutRecyclerView.setLayoutManager(remove);
+
         //Add to cart Adapters
         AdditionAdapter additionAdapter = new AdditionAdapter(this);
         RemoveAdapter removeAdapter = new RemoveAdapter(this);
         // MenueDetailsAdapter menueDetailsAdapter=new MenueDetailsAdapter(this);
+
         //My Adapters
         binding.withoutRecyclerView.setAdapter(removeAdapter);
         binding.additionRecyclerView.setAdapter(additionAdapter);
         String id = getArguments().getString("subCategoryId");
         String sizeId = getArguments().getString("sizeId");
+
         //client Id
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
         String clientId = sharedPreferences.getString("clientId", "");
         mViewModel.getItemDetails(id);
         mViewModel.getAddition(id);
         mViewModel.getRemoves(id);
+
         //ratingBar
         LayerDrawable stars = (LayerDrawable) binding.itemRating.getProgressDrawable();
         stars.getDrawable(1).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+
         //Expand Arrow Button Additions
         binding.arrowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +113,7 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+
         //Without Expand Arrow Button
         binding.arrowBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +129,7 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+
         //AddNotes Expand Arrow Button
         binding.arrowBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +145,7 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+
         //increament button
         binding.incrementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +157,7 @@ public class CardMenueDetails extends Fragment {
 
             }
         });
+
         //decrement Button
         binding.decrementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +172,7 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+
         //add to cart button
         binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,6 +244,7 @@ public class CardMenueDetails extends Fragment {
 
             }
         });
+        //post cart to Api (Add to cart button)
         mViewModel.responseCart_modelMutableLiveData.observe(this, new Observer<ResponseCart_Model>() {
             @Override
             public void onChanged(ResponseCart_Model responseCart_model) {
@@ -239,7 +252,7 @@ public class CardMenueDetails extends Fragment {
                     Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
                 } else {
-                    Toast.makeText(getContext(), "please Login", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "please Login to add to cart", Toast.LENGTH_SHORT).show();
 
                     Log.e("TAG", "onChanged: add to cart failed on change" + responseCart_model.getMessage());
                 }
