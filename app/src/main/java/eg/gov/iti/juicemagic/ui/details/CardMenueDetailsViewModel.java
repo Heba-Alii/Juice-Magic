@@ -23,8 +23,8 @@ public class CardMenueDetailsViewModel extends ViewModel {
     public MutableLiveData<Remove_Response> removeResponseMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<ResponseCart_Model> responseCart_modelMutableLiveData = new MutableLiveData<>();
 
-    public void getItemDetails(String subCategoryId) {
-        Call<SubCategoryModel> call = JuiceRetrofit.getInstance().getJuice().getDetails("en","", subCategoryId);
+    public void getItemDetails(String subCategoryId,String clientId) {
+        Call<SubCategoryModel> call = JuiceRetrofit.getInstance().getJuice().getDetails("en",clientId, subCategoryId);
         call.enqueue(new Callback<SubCategoryModel>() {
             @Override
             public void onResponse(Call<SubCategoryModel> call, Response<SubCategoryModel> response) {

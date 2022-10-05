@@ -68,7 +68,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
              // Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
                 AppCompatActivity activity1 = (AppCompatActivity) view.getContext();
                 activity1.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue,cardMenueDetails)
-                        .commit();
+                        .addToBackStack("menue").commit();
 
             }
         });

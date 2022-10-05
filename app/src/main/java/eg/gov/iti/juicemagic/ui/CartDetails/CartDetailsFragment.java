@@ -2,6 +2,8 @@ package eg.gov.iti.juicemagic.ui.CartDetails;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -53,9 +55,10 @@ public class CartDetailsFragment extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //  Navigation.findNavController(view).navigate(R.id.action_nav_cart_to_nav_home);
-                HomeFragment homeFragment = new HomeFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+                //   HomeFragment homeFragment = new HomeFragment();
+
+                // getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue,cardMenueDetails).commit();
+                getActivity().getSupportFragmentManager().popBackStack("menue", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
         //to use client id from shared preference
@@ -85,12 +88,14 @@ public class CartDetailsFragment extends Fragment {
                 }
             }
         });
-        //To control on back button build in mobile where to navigate
+        // To control on back button build in mobile where to navigate
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 HomeFragment homeFragment = new HomeFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+
+                // getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+                getActivity().getSupportFragmentManager().popBackStack("menue", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             }
         };

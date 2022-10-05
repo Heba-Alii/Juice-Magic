@@ -2,6 +2,7 @@ package eg.gov.iti.juicemagic.ui.details;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -90,7 +91,8 @@ public class CardMenueDetails extends Fragment {
         //client Id
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
         String clientId = sharedPreferences.getString("clientId", "");
-        mViewModel.getItemDetails(id);
+        //mViewModel.getItemDetails(id);
+        mViewModel.getItemDetails(id, clientId);
         mViewModel.getAddition(id);
         mViewModel.getRemoves(id);
 
@@ -194,7 +196,9 @@ public class CardMenueDetails extends Fragment {
             public void onClick(View view) {
                 //Navigation.findNavController(view).navigate(R.id.action_nav_details_to_nav_menue);
                 HomeFragment homeFragment = new HomeFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+                // getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+                getActivity().getSupportFragmentManager().popBackStack("menue", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
             }
         });
         Log.e("TAG", "onCreateView: " + id);
@@ -257,7 +261,9 @@ public class CardMenueDetails extends Fragment {
                     //  Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
 
                     CartDetailsFragment cartDetailsFragment = new CartDetailsFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, cartDetailsFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, cartDetailsFragment)
+                            .addToBackStack("cardMenueDetails").commit();
+
                 } else {
                     Toast.makeText(getContext(), "please Login to add to cart", Toast.LENGTH_SHORT).show();
 
@@ -270,7 +276,7 @@ public class CardMenueDetails extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 HomeFragment homeFragment = new HomeFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+                getActivity().getSupportFragmentManager().popBackStack("menue", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             }
         };
