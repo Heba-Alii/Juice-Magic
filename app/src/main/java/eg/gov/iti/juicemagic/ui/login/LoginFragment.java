@@ -14,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
+
+import java.lang.annotation.Native;
 
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentLoginBinding;
@@ -75,7 +78,6 @@ public class LoginFragment extends Fragment {
                     edit.commit();
                     Log.e("TAG", "onChanged: not user" + authModel.getMessage());
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, new HomeFragment()).commit();
-
 
                 } else {
                     Toast.makeText(getContext(), "user not found", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,7 @@
 package eg.gov.iti.juicemagic.ui.menue;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +98,8 @@ public class MenueFragment extends Fragment {
                     binding.pager.setAdapter(menueAdapter);
                     //  String categoryId = getArguments().getString("parentCategoryId");
                     int index = getArguments().getInt("index");
+                    Log.e("TAG", "onChanged: this fragment is" + parentCategoryModel.getProduct());
+
                     binding.pager.setCurrentItem(index);
 
                 }

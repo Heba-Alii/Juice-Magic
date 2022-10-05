@@ -8,14 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentHomeBinding;
 import eg.gov.iti.juicemagic.pojo.JuiceModel;
 import eg.gov.iti.juicemagic.ui.CategoryMenueAdapter;
@@ -24,6 +28,7 @@ import eg.gov.iti.juicemagic.ui.LatestAdapter;
 import eg.gov.iti.juicemagic.ui.MostsellingAdapter;
 import eg.gov.iti.juicemagic.ui.OffersAdapter;
 import eg.gov.iti.juicemagic.ui.SlideraAdapter;
+import eg.gov.iti.juicemagic.ui.menue.MenueFragment;
 
 public class HomeFragment extends Fragment {
     JuiceViewModel juiceViewModel;
@@ -37,9 +42,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-        // final TextView textView = binding.textHome;
-        //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        // ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         juiceViewModel = ViewModelProviders.of(this).get(JuiceViewModel.class);
         juiceViewModel.getJuices();
         CategoryMenueAdapter categoryMenueAdapter = new CategoryMenueAdapter();
@@ -52,6 +54,8 @@ public class HomeFragment extends Fragment {
         binding.mostsellingRecycler.setAdapter(mostsellingAdapter);
         OffersAdapter offersAdapter = new OffersAdapter();
         binding.offersRecycler.setAdapter(offersAdapter);
+
+
         juiceViewModel.juiceMutableLiveData.observe(this, new Observer<JuiceModel>() {
             @Override
             public void onChanged(JuiceModel juiceModel) {
@@ -76,6 +80,8 @@ public class HomeFragment extends Fragment {
                 if (juiceModel.getOffers() != null && juiceModel.getOffers().size() != 0) {
                     offersAdapter.setList(juiceModel.getOffers());
                 }
+
+
             }
         });
 //        binding.categoryRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));

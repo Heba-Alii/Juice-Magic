@@ -1,5 +1,6 @@
 package eg.gov.iti.juicemagic.ui.details;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -39,7 +40,9 @@ import eg.gov.iti.juicemagic.pojo.SubCategoryModel;
 import eg.gov.iti.juicemagic.ui.CartDetails.CartDetailsFragment;
 import eg.gov.iti.juicemagic.ui.JuiceViewModel;
 import eg.gov.iti.juicemagic.ui.SideMenue;
+import eg.gov.iti.juicemagic.ui.home.HomeFragment;
 import eg.gov.iti.juicemagic.ui.menue.MenueDetailsAdapter;
+import eg.gov.iti.juicemagic.ui.menue.MenueFragment;
 import eg.gov.iti.juicemagic.ui.menue.MenueViewModel;
 
 public class CardMenueDetails extends Fragment {
@@ -189,8 +192,9 @@ public class CardMenueDetails extends Fragment {
         binding.circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_details_to_nav_menue);
-
+                //Navigation.findNavController(view).navigate(R.id.action_nav_details_to_nav_menue);
+                HomeFragment homeFragment = new HomeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
             }
         });
         Log.e("TAG", "onCreateView: " + id);
@@ -250,7 +254,10 @@ public class CardMenueDetails extends Fragment {
             public void onChanged(ResponseCart_Model responseCart_model) {
                 if (responseCart_model.getSuccess() == 1 && clientId != "") {
                     Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
+                    //  Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
+
+                    CartDetailsFragment cartDetailsFragment = new CartDetailsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, cartDetailsFragment).commit();
                 } else {
                     Toast.makeText(getContext(), "please Login to add to cart", Toast.LENGTH_SHORT).show();
 
@@ -258,8 +265,19 @@ public class CardMenueDetails extends Fragment {
                 }
             }
         });
+        //To control on back button build in mobile where to navigate
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                HomeFragment homeFragment = new HomeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
+
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         return root;
     }
+
 
     //Add addition To Cart
     public void addditionAdapter(String addition_id) {

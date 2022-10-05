@@ -1,5 +1,6 @@
 package eg.gov.iti.juicemagic.ui.CartDetails;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,6 +29,7 @@ import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.databinding.FragmentCartDetailsBinding;
 import eg.gov.iti.juicemagic.pojo.GetCart_Model;
 import eg.gov.iti.juicemagic.ui.details.CardMenueDetails;
+import eg.gov.iti.juicemagic.ui.home.HomeFragment;
 
 public class CartDetailsFragment extends Fragment {
 
@@ -51,7 +53,9 @@ public class CartDetailsFragment extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_nav_cart_to_nav_home);
+                //  Navigation.findNavController(view).navigate(R.id.action_nav_cart_to_nav_home);
+                HomeFragment homeFragment = new HomeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
             }
         });
         //to use client id from shared preference
@@ -81,7 +85,16 @@ public class CartDetailsFragment extends Fragment {
                 }
             }
         });
+        //To control on back button build in mobile where to navigate
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                HomeFragment homeFragment = new HomeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
 
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
         return root;
     }
 

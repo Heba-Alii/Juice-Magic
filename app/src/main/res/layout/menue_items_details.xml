@@ -6,6 +6,13 @@
     <data>
 
     </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:id="@+id/menue_details_container"
+    android:layout_height="wrap_content">
+
+
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,4 +118,5 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
 </layout>

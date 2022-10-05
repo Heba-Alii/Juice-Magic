@@ -21,7 +21,10 @@ public class MenueViewModel extends ViewModel {
             @Override
             public void onResponse(Call<ParentCategoryModel> call, Response<ParentCategoryModel> response) {
                 if (response.body().getSuccess()==1){
+                    Log.e("TAG", "onResponse: menue View Model"+response.body() );
                     menueMutableliveData.setValue(response.body());
+                }else {
+                    Log.e("TAG", "onResponse: "+response.body() );
                 }
             }
 

@@ -9,7 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +52,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
                 .load(subCategoryModel.getSub_category_image()).placeholder(R.drawable.logo)
                 .fitCenter()
                 .into(holder.menueDetailsImg);
-        holder.menueDetailsCV.setOnClickListener(new View.OnClickListener() {
+        holder.menue_details_constraint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CardMenueDetails cardMenueDetails = new CardMenueDetails();
@@ -62,7 +64,12 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
                     Toast.makeText(view.getContext(), "Not Available price Now", Toast.LENGTH_SHORT).show();
                 }
                 cardMenueDetails.setArguments(bundle);
-                Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
+
+             // Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
+                AppCompatActivity activity1 = (AppCompatActivity) view.getContext();
+                activity1.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue,cardMenueDetails)
+                        .commit();
+
             }
         });
     }
@@ -85,6 +92,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
         ImageButton favBtn;
         ImageButton cartBtn;
         CardView menueDetailsCV;
+        ConstraintLayout menue_details_constraint;
 
         public MenueDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -94,7 +102,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
             favBtn = itemView.findViewById(R.id.fav_btn);
             cartBtn = itemView.findViewById(R.id.card_btn);
             menueDetailsCV = itemView.findViewById(R.id.menue_details_CV);
-
+            menue_details_constraint=itemView.findViewById(R.id.menue_details_constraint);
         }
     }
 }
