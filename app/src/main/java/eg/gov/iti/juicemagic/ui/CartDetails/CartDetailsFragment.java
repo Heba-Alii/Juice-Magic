@@ -55,12 +55,12 @@ public class CartDetailsFragment extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //   HomeFragment homeFragment = new HomeFragment();
 
-                // getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue,cardMenueDetails).commit();
                 getActivity().getSupportFragmentManager().popBackStack("menue", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+
+
         //to use client id from shared preference
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
         String clientId = sharedPreferences.getString("clientId", "");
@@ -96,7 +96,6 @@ public class CartDetailsFragment extends Fragment {
 
                 // getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, homeFragment).commit();
                 getActivity().getSupportFragmentManager().popBackStack("menue", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);

@@ -10,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 
 import eg.gov.iti.juicemagic.R;
 import eg.gov.iti.juicemagic.pojo.GetCart_Model;
+import eg.gov.iti.juicemagic.ui.details.CardMenueDetails;
 //import eg.gov.iti.recyclerview.R;
 //import eg.gov.iti.recyclerview.pojo.GetCart_Model;
 
@@ -100,6 +103,8 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
             }
         });
 
+
+
     }
 
     @Override
@@ -126,6 +131,7 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
         TextView addition_txt;
         TextView without_txt;
         TextView addAnyNotes_txt;
+        ImageView back_btn;
 
 
 
@@ -144,7 +150,7 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
             addition_txt=itemView.findViewById(R.id.addition_txt);
             without_txt=itemView.findViewById(R.id.without_txt);
             addAnyNotes_txt=itemView.findViewById(R.id.addAnyNotes_txt);
-
+            back_btn=itemView.findViewById(R.id.back_btn);
         }
     }
 }

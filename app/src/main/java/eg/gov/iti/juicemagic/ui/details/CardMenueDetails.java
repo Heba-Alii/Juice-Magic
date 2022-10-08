@@ -252,6 +252,7 @@ public class CardMenueDetails extends Fragment {
 
             }
         });
+
         //post cart to Api (Add to cart button)
         mViewModel.responseCart_modelMutableLiveData.observe(this, new Observer<ResponseCart_Model>() {
             @Override
@@ -259,10 +260,11 @@ public class CardMenueDetails extends Fragment {
                 if (responseCart_model.getSuccess() == 1 && clientId != "") {
                     Toast.makeText(getContext(), "Your Data" + responseCart_model.getMessage(), Toast.LENGTH_SHORT).show();
                     //  Navigation.findNavController(getView()).navigate(R.id.action_nav_details_to_nav_cart);
-
-                    CartDetailsFragment cartDetailsFragment = new CartDetailsFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, cartDetailsFragment)
+                    Log.e("TAG", "onChanged: " + responseCart_model.getSuccess());
+                    Fragment cartDetailsFragment = new CartDetailsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, cartDetailsFragment, "cardMenueDetails")
                             .addToBackStack("cardMenueDetails").commit();
+
 
                 } else {
                     Toast.makeText(getContext(), "please Login to add to cart", Toast.LENGTH_SHORT).show();
