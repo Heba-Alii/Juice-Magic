@@ -72,7 +72,20 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
 
             }
         });
+        boolean isPlay = false;
+        holder.favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                if (isPlay) {
+                    holder.favBtn.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+                } else {
+
+                    holder.favBtn.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+
+                }
+            }
+        });
     }
 
     @Override
