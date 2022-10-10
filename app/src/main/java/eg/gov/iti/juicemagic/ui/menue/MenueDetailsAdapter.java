@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import eg.gov.iti.juicemagic.ui.details.CardMenueDetails;
 public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapter.MenueDetailsViewHolder> {
     private ArrayList<JuiceModel.Latest> menueDetailsList = new ArrayList<>();
     CardMenueDetails cardMenueDetails;
+    boolean imageChange = true;
 
 
     @NonNull
@@ -72,17 +74,20 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
 
             }
         });
-        boolean isPlay = false;
+
         holder.favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (isPlay) {
-                    holder.favBtn.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
-                } else {
-
+                if (imageChange) {
                     holder.favBtn.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
 
+                    imageChange = false;
+                } else {
+
+                    holder.favBtn.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+
+                    imageChange = true;
                 }
             }
         });
