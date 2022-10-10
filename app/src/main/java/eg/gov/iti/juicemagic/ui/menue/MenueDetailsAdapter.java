@@ -1,5 +1,6 @@
 package eg.gov.iti.juicemagic.ui.menue;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,6 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
     CardMenueDetails cardMenueDetails;
 
 
-
     @NonNull
     @Override
     public MenueDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,20 +58,21 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
                 CardMenueDetails cardMenueDetails = new CardMenueDetails();
                 Bundle bundle = new Bundle();
                 bundle.putString("subCategoryId", subCategoryModel.getSub_category_id());
-                if (subCategoryModel.getSizes().stream().count()!=0) {
+                if (subCategoryModel.getSizes().stream().count() != 0) {
                     bundle.putString("sizeId", subCategoryModel.getSizes().get(0).getSub_category_size_price_id());
-                }else {
+                } else {
                     Toast.makeText(view.getContext(), "Not Available price Now", Toast.LENGTH_SHORT).show();
                 }
                 cardMenueDetails.setArguments(bundle);
 
-             // Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
+                // Navigation.findNavController(view).navigate(R.id.action_nav_menue_to_nav_details, bundle);
                 AppCompatActivity activity1 = (AppCompatActivity) view.getContext();
-                activity1.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue,cardMenueDetails)
+                activity1.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, cardMenueDetails)
                         .addToBackStack("menue").commit();
 
             }
         });
+
     }
 
     @Override
@@ -94,6 +95,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
         CardView menueDetailsCV;
         ConstraintLayout menue_details_constraint;
 
+
         public MenueDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
             menueDetailsImg = itemView.findViewById(R.id.menue_details_circle_imgView);
@@ -102,7 +104,7 @@ public class MenueDetailsAdapter extends RecyclerView.Adapter<MenueDetailsAdapte
             favBtn = itemView.findViewById(R.id.fav_btn);
             cartBtn = itemView.findViewById(R.id.card_btn);
             menueDetailsCV = itemView.findViewById(R.id.menue_details_CV);
-            menue_details_constraint=itemView.findViewById(R.id.menue_details_constraint);
+            menue_details_constraint = itemView.findViewById(R.id.menue_details_constraint);
         }
     }
 }

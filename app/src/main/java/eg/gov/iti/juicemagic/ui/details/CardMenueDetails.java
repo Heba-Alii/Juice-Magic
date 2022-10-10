@@ -283,6 +283,8 @@ public class CardMenueDetails extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+
+
         return root;
     }
 
