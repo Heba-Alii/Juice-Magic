@@ -3,67 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/nav_menue_container">
-
-
-
-
     <RelativeLayout
+        android:id="@+id/nav_menue_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-
-        android:background="@drawable/card_view"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
 
         <RelativeLayout
-            android:id="@+id/relative_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:padding="10dp">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/menue_tab"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"
-                android:elevation="0dp"
-                android:foregroundGravity="center"
-                android:layoutDirection="ltr"
-                app:tabBackground="@drawable/card_view_btn"
-
-                app:tabGravity="fill"
-                app:tabIndicatorColor="@android:color/transparent"
-                app:tabIndicatorHeight="0dp"
-                app:tabMaxWidth="0dp"
-
-                app:tabMinWidth="80dp"
-                app:tabMode="scrollable"
-
-                app:tabSelectedTextColor="#FFFFFF"
-                app:tabTextColor="#000000" />
-        </RelativeLayout>
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
 
-            android:layout_below="@+id/relative_layout"
-            android:layout_marginTop="10dp">
+            android:background="@drawable/card_view"
+            android:gravity="center">
 
-        </androidx.viewpager.widget.ViewPager>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:padding="10dp">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/menue_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:foregroundGravity="center"
+                    android:layoutDirection="ltr"
+                    app:tabBackground="@drawable/card_view_btn"
+
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@android:color/transparent"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMaxWidth="0dp"
+
+                    app:tabMinWidth="80dp"
+                    app:tabMode="scrollable"
+
+                    app:tabSelectedTextColor="#FFFFFF"
+                    app:tabTextColor="#000000" />
+            </RelativeLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_below="@+id/relative_layout"
+                android:layout_marginTop="10dp">
+
+            </androidx.viewpager.widget.ViewPager>
+
+        </RelativeLayout>
 
     </RelativeLayout>
-
-</RelativeLayout>
 
 </layout>

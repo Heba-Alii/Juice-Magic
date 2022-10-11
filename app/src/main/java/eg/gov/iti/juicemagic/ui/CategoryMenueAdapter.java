@@ -67,9 +67,9 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
                 bundle.putInt("index", position);
                 menueFragment.setArguments(bundle);
                 Log.e("TAG", "onClick: error in nav" + position);
-             // Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_menue,bundle);
+                // Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_menue,bundle);
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                CardMenueDetails cardMenueDetails=new CardMenueDetails();
+                CardMenueDetails cardMenueDetails = new CardMenueDetails();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_side_menue, menueFragment)
                         .addToBackStack("home").commit();
 

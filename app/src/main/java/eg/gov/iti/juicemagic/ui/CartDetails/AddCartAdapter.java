@@ -63,28 +63,28 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
         additionCartAdapter.setList(getCartModel.getAddition());
         removeCartAdapter.setList(getCartModel.getRemove());
         holder.user_addNotes_text.setText(getCartModel.getSub_category_desc());
-        if (getCartModel.getAddition().stream().count()!=0){
+        if (getCartModel.getAddition().stream().count() != 0) {
             holder.addition_txt.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.addition_txt.setVisibility(View.GONE);
         }
-        if (getCartModel.getRemove().stream().count()!=0){
+        if (getCartModel.getRemove().stream().count() != 0) {
             holder.without_txt.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.without_txt.setVisibility(View.GONE);
         }
-        if (getCartModel.getSub_category_desc().isEmpty()){
+        if (getCartModel.getSub_category_desc().isEmpty()) {
             holder.addAnyNotes_txt.setVisibility(View.GONE);
 
-        }else {
+        } else {
             holder.addAnyNotes_txt.setVisibility(View.VISIBLE);
 
         }
         holder.increment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String number=holder.quantity_txt.getText().toString();
-                int count=Integer.parseInt(number);
+                String number = holder.quantity_txt.getText().toString();
+                int count = Integer.parseInt(number);
                 count++;
                 holder.quantity_txt.setText(String.valueOf(count));
             }
@@ -92,17 +92,16 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
         holder.decrement_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String number=holder.quantity_txt.getText().toString();
-                int count=Integer.parseInt(number);
-                if (count>1){
+                String number = holder.quantity_txt.getText().toString();
+                int count = Integer.parseInt(number);
+                if (count > 1) {
                     count--;
                     holder.quantity_txt.setText(String.valueOf(count));
-                }else {
+                } else {
                     Toast.makeText(view.getContext(), "Minimum order is 1", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
     }
@@ -134,7 +133,6 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
         ImageView back_btn;
 
 
-
         public AddCartViewHolder(@NonNull View itemView) {
             super(itemView);
             juice_name = itemView.findViewById(R.id.juice_name);
@@ -146,11 +144,11 @@ public class AddCartAdapter extends RecyclerView.Adapter<AddCartAdapter.AddCartV
             delete_quntity_btn = itemView.findViewById(R.id.delete_quntity_btn);
             user_addition_rv = itemView.findViewById(R.id.user_addition_rv);
             user_remove_rv = itemView.findViewById(R.id.user_remove_rv);
-            user_addNotes_text=itemView.findViewById(R.id.user_addNotes_text);
-            addition_txt=itemView.findViewById(R.id.addition_txt);
-            without_txt=itemView.findViewById(R.id.without_txt);
-            addAnyNotes_txt=itemView.findViewById(R.id.addAnyNotes_txt);
-            back_btn=itemView.findViewById(R.id.back_btn);
+            user_addNotes_text = itemView.findViewById(R.id.user_addNotes_text);
+            addition_txt = itemView.findViewById(R.id.addition_txt);
+            without_txt = itemView.findViewById(R.id.without_txt);
+            addAnyNotes_txt = itemView.findViewById(R.id.addAnyNotes_txt);
+            back_btn = itemView.findViewById(R.id.back_btn);
         }
     }
 }

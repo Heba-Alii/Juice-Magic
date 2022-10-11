@@ -63,10 +63,6 @@ public class SideMenue extends AppCompatActivity implements
                 .build();
         Log.e("TAG", "onCreate: on create");
 
-        //NavController navController=Navigation.findNavController(this,R.id.nav_host_fragment_content_side_menue);
-        //NavigationUI.setupActionBarWithNavController(this,navController,mAppBarConfiguration);
-        //NavigationUI.setupWithNavController(navigationView,navController);
-
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);

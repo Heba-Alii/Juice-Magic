@@ -62,11 +62,11 @@ public class LoginFragment extends Fragment {
         loginViewModel.loginMutableLiveData.observe(this, new Observer<AuthModel>() {
             @Override
             public void onChanged(AuthModel authModel) {
-                if (authModel.getSuccess()==1) {
+                if (authModel.getSuccess() == 1) {
                     Log.e("TAG", "onChanged: not user" + authModel.getMessage());
 
                     //sharedPreferences = getActivity().getSharedPreferences("Users", Context.MODE_PRIVATE);
-                    sharedPreferences=requireContext().getSharedPreferences("Users",Context.MODE_APPEND);
+                    sharedPreferences = requireContext().getSharedPreferences("Users", Context.MODE_APPEND);
                     Log.e("TAG", "onChanged: not user" + authModel.getMessage());
 
                     SharedPreferences.Editor edit = sharedPreferences.edit();

@@ -30,7 +30,7 @@ public class MenueDetailsViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<SubCategoryModel> call, Throwable t) {
-                Log.e("TAG", "onFailure: "+t.getMessage() );
+                Log.e("TAG", "onFailure: " + t.getMessage());
             }
         });
     }

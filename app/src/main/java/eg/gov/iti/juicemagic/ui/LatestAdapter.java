@@ -31,11 +31,6 @@ public class LatestAdapter extends RecyclerView.Adapter<LatestAdapter.LatestView
         JuiceModel.Latest latest = latestList.get(position);
         holder.latestName.setText(latest.getSub_category_name());
         holder.latestPrice.setText(latest.getSizes().get(0).getSub_category_size_price());
-//        if (" " != latest.getSub_category_desc()) {
-//            holder.latestDesc.setText(latest.getSub_category_desc());
-//        } else {
-//            holder.latestDesc.setText("BHD");
-//        }
         Glide.with(holder.itemView)
                 .load(latest.getSub_category_image())
                 .placeholder(R.drawable.mob).fitCenter()

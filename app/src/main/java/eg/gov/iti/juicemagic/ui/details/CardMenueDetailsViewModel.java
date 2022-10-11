@@ -23,8 +23,8 @@ public class CardMenueDetailsViewModel extends ViewModel {
     public MutableLiveData<Remove_Response> removeResponseMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<ResponseCart_Model> responseCart_modelMutableLiveData = new MutableLiveData<>();
 
-    public void getItemDetails(String subCategoryId,String clientId) {
-        Call<SubCategoryModel> call = JuiceRetrofit.getInstance().getJuice().getDetails("en",clientId, subCategoryId);
+    public void getItemDetails(String subCategoryId, String clientId) {
+        Call<SubCategoryModel> call = JuiceRetrofit.getInstance().getJuice().getDetails("en", clientId, subCategoryId);
         call.enqueue(new Callback<SubCategoryModel>() {
             @Override
             public void onResponse(Call<SubCategoryModel> call, Response<SubCategoryModel> response) {
@@ -89,12 +89,11 @@ public class CardMenueDetailsViewModel extends ViewModel {
         call.enqueue(new Callback<ResponseCart_Model>() {
             @Override
             public void onResponse(Call<ResponseCart_Model> call, Response<ResponseCart_Model> response) {
-                if (response.body().getSuccess()==1){
-                Log.e("TAG", "onResponse: add to cart on response" + response.body());
-                responseCart_modelMutableLiveData.setValue(response.body());
-                }
-                else {
-                    Log.e("TAG", "onResponse: addto cart not suceess"+response.body() );
+                if (response.body().getSuccess() == 1) {
+                    Log.e("TAG", "onResponse: add to cart on response" + response.body());
+                    responseCart_modelMutableLiveData.setValue(response.body());
+                } else {
+                    Log.e("TAG", "onResponse: addto cart not suceess" + response.body());
                 }
             }
 
