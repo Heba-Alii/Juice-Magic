@@ -48,6 +48,7 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
         return new CategoryViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.menue_items_layout, parent, false));
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
 
@@ -61,6 +62,7 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
                 .into(holder.categoryImg);
         holder.card_menue.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 MenueFragment menueFragment = new MenueFragment();
                 Bundle bundle = new Bundle();
@@ -104,4 +106,5 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
             card_menue = itemView.findViewById(R.id.card_menue);
         }
     }
+    
 }

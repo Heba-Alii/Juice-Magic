@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/add_to_cart_btn.xml" value="0.177" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/card_view.xml" value="0.126" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/card_view_btn.xml" value="0.126" />
@@ -11,23 +12,36 @@
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/green_increment_card.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/green_quantity_text.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.126" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.2115" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_brunch_dining_24.xml" value="0.148" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.148" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_delivery_dining_24.xml" value="0.1475" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_expand_more_24.xml" value="0.1505" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.135" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.135" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_food_bank_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.2115" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_local_dining_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_local_shipping_24.xml" value="0.1475" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.148" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_minimize_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.126" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_phone_android_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_launcher_background.xml" value="0.126" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_menu_camera.xml" value="0.148" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/increase_button.xml" value="0.191" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/line.xml" value="0.192" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/menue_details_img_card.xml" value="0.179" />
+        <entry key="..\:/Emcan Projects/app/src/main/res/drawable/sign_up_24.xml" value="0.148" />
         <entry key="..\:/Emcan Projects/app/src/main/res/drawable/white_card_with_orange_border.xml" value="0.1475" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout-v28/latest_items_layout.xml" value="0.17980072463768115" />
         <entry key="..\:/Emcan Projects/app/src/main/res/layout/actionbar_title.xml" value="0.17980072463768115" />
