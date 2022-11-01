@@ -11,8 +11,6 @@
         android:id="@+id/menue_details_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/menue_details_constraint"
             android:layout_width="match_parent"
@@ -58,8 +56,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-
                     <TextView
                         android:id="@+id/menue_name_tv"
                         android:layout_width="150dp"
@@ -72,7 +68,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/fav_btn"
                         app:layout_constraintTop_toTopOf="parent" />
-
                     <TextView
                         android:id="@+id/menue_price_tv"
                         android:layout_width="wrap_content"
