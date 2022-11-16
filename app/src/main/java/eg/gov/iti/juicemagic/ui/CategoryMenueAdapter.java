@@ -78,7 +78,6 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
             }
         });
 
-
     }
 
     @Override
@@ -106,5 +105,5 @@ public class CategoryMenueAdapter extends RecyclerView.Adapter<CategoryMenueAdap
             card_menue = itemView.findViewById(R.id.card_menue);
         }
     }
-    
+
 }
